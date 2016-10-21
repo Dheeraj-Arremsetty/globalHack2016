@@ -8,6 +8,7 @@ from flask import redirect, url_for
 
 from globalhack.services import register_services
 
+
 WSGI_PATH_PREFIX = ''
 
 class Config():
@@ -22,10 +23,6 @@ class Config():
 application = flask.Flask(__name__)
 application.config['CONFIG_PATH'] = os.path.join(os.path.basename(__file__), "config/")
 cfg = None
-
-# @application.route(WSGI_PATH_PREFIX + '/')
-# def root():
-#     return redirect(url_for('index'))
 
 @application.route(WSGI_PATH_PREFIX + '/globalhack')
 def index():
@@ -46,6 +43,12 @@ if __name__ == '__main__':
     WSGI_PATH_PREFIX = '/globalhack'
     cfg = Config(application, WSGI_PATH_PREFIX)
     dport = int(sys.argv[1]) if len(sys.argv) > 1 else 5050
-    application.run(host='0.0.0.0',port=dport,debug=True,use_reloader=True,processes=100,static_files={'/':'static'})
+
+    application.run(host='0.0.0.0',
+                    port=dport,
+                    debug=True,
+                    use_reloader=True,
+                    processes=100,
+                    static_files={'/':'static'})
 else:
     cfg = Config(application, WSGI_PATH_PREFIX)
