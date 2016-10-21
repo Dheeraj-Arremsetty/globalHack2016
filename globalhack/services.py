@@ -1,19 +1,14 @@
-import os, json
+import json
+import os
+
 from flask import jsonify, request, Response, redirect
-BASE_PATH = str(os.path.realpath(__file__))
-BASE_PATH = BASE_PATH.replace('basicServer_services.pyc', '')
-BASE_PATH = BASE_PATH.replace('basicServer_services.pyo', '')
-BASE_PATH = BASE_PATH.replace('basicServer_services.py', '')
 
-CLASS_PATH = BASE_PATH.replace('classes', '')
-
-
-def register_services(app, WSGI_PATH_PREFIX):
-    BaseServices(app, WSGI_PATH_PREFIX)
+def register_services(app, prefix):
+    BaseServices(app, prefix)
 
 
 class BaseServices:
-    def __init__(self, app, WSGI_PATH_PREFIX):
+    def __init__(self, app, prefix):
         self.session_users = {}
         self.app = app
         print'----------------------------------------------------------------------------'
@@ -44,12 +39,8 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/demo', 'demo', self.demo, methods=['POST', 'GET'])
-        self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/giveJson', 'giveJson', self.giveJson, methods=['POST', 'GET'])
-        self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/add', 'add', self.add, methods=['POST', 'GET'])
-
-    def demo(self):
-        return  'In DEMO method'
+        self.app.add_url_rule(prefix + '/services/giveJson', 'giveJson', self.giveJson, methods=['POST', 'GET'])
+        self.app.add_url_rule(prefix + '/services/add', 'add', self.add, methods=['POST', 'GET'])
 
     def giveJson(self):
         _d = {i:i*'S' for i in xrange(55)}
@@ -61,10 +52,10 @@ class BaseServices:
     def add(self):
         #http://0.0.0.0:5050/globalhack/services/add?a=100&b=200
         params = self.getparams(request)
-        a =params.get('a',5)
-        b =params.get('b',10)
+        a = params.get('a',5)
+        b = params.get('b',10)
         # print params
         # a = 5
         # b= 10
-        c = int(a)+int(b)
+        c = int(a) + int(b)
         return str(c)
