@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 import os, sys, flask
 base_path = os.path.dirname(__file__)
 class_path = os.path.join(base_path, "classes")
