@@ -1,12 +1,7 @@
-import os, json
+import json
+import os
+
 from flask import jsonify, request, Response, redirect
-BASE_PATH = str(os.path.realpath(__file__))
-BASE_PATH = BASE_PATH.replace('basicServer_services.pyc', '')
-BASE_PATH = BASE_PATH.replace('basicServer_services.pyo', '')
-BASE_PATH = BASE_PATH.replace('basicServer_services.py', '')
-
-CLASS_PATH = BASE_PATH.replace('classes', '')
-
 
 def register_services(app, WSGI_PATH_PREFIX):
     BaseServices(app, WSGI_PATH_PREFIX)
@@ -44,12 +39,8 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/demo', 'demo', self.demo, methods=['POST', 'GET'])
         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/giveJson', 'giveJson', self.giveJson, methods=['POST', 'GET'])
         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/add', 'add', self.add, methods=['POST', 'GET'])
-
-    def demo(self):
-        return  'In DEMO method'
 
     def giveJson(self):
         _d = {i:i*'S' for i in xrange(55)}
