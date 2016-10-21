@@ -10,7 +10,7 @@ class BaseServices:
     def __init__(self, app, prefix):
         self.session_users = {}
         self.app = app
-        print'----------------------------------------------------------------------------'
+        print '-' * 50
         print '                        Getting Elastic Config'
         # self.connections = self.app.config['Managers'].get('Database').connections
         # db = self.app.config['Managers'].get('Database')
@@ -29,11 +29,11 @@ class BaseServices:
         #     'FAC': 'metric_fac',
         #     'OTD': 'metric_otd'
         # }
-        print'----------------------------------------------------------------------------'
+        print '-' * 50
         print '                        Elastic is Stretching'
-        print'----------------------------------------------------------------------------'
+        print '-' * 50
         print '                        Register MDMDQ API'
-        print'----------------------------------------------------------------------------'
+        print '-' * 50
         #       ----------------------------------------------------------------------------
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
