@@ -1,26 +1,26 @@
 #!/usr/bin/env python2.7
 
-import os, sys, flask
-base_path = os.path.dirname(__file__)
-class_path = os.path.join(base_path, "classes")
-config_path = os.path.join(base_path, "config/")
-sys.path.insert(0, base_path)
-sys.path.insert(1, class_path)
+import flask
+import os
+import sys
+
+from flask import redirect, url_for
+
+from globalhack.services import register_services
 
 WSGI_PATH_PREFIX = ''
-from flask import redirect, url_for
-import basicServer_services as services
+
 class Config():
     def __init__(self,app,WSGI_PATH_PREFIX):
         self.app = app
         # register managers and then services
         print'----------------------------------------------------------------------------'
         print '                   WSGIPrefix set to %s'%WSGI_PATH_PREFIX
-        self.srvs = services.register_services(app, WSGI_PATH_PREFIX)
+        self.srvs = register_services(app, WSGI_PATH_PREFIX)
 
 # create application
 application = flask.Flask(__name__)
-application.config['CONFIG_PATH'] = config_path
+application.config['CONFIG_PATH'] = os.path.join(os.path.basename(__file__), "config/")
 cfg = None
 
 # @application.route(WSGI_PATH_PREFIX + '/')
@@ -29,17 +29,17 @@ cfg = None
 
 @application.route(WSGI_PATH_PREFIX + '/globalhack')
 def index():
-    print 'comming here'
+    print 'Index entry'
     return "<b>hello</b>"
 
 def set_wsgi_prefix(prefix='/'):
-    print 'comming in setWsgi'
+    print 'setWsgi entry'
     WSGI_PATH_PREFIX = prefix
     cfg = Config(application, WSGI_PATH_PREFIX)
 
 @application.route(WSGI_PATH_PREFIX + '/')
 def root():
-    print 'comming in root'
+    print 'Root entry'
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
