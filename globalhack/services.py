@@ -6,7 +6,6 @@ from flask import jsonify, request, Response, redirect
 def register_services(app, prefix):
     BaseServices(app, prefix)
 
-
 class BaseServices:
     def __init__(self, app, prefix):
         self.session_users = {}
@@ -39,8 +38,11 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        self.app.add_url_rule(prefix + '/services/giveJson', 'giveJson', self.giveJson, methods=['POST', 'GET'])
-        self.app.add_url_rule(prefix + '/services/add', 'add', self.add, methods=['POST', 'GET'])
+        for endpoint in [ 'giveJson', 'add']:
+            self.app.add_url_rule(prefix + '/services/%s' % endpoint,
+                                  endpoint,
+                                  getattr(self, endpoint),
+                                  methods=['POST', 'GET'])
 
     def giveJson(self):
         _d = {i:i*'S' for i in xrange(55)}
@@ -52,8 +54,8 @@ class BaseServices:
     def add(self):
         #http://0.0.0.0:5050/globalhack/services/add?a=100&b=200
         params = self.getparams(request)
-        a = params.get('a',5)
-        b = params.get('b',10)
+        a = params.get('a', 5)
+        b = params.get('b', 10)
         # print params
         # a = 5
         # b= 10
