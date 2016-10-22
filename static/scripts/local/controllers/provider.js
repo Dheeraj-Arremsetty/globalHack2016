@@ -85,9 +85,7 @@ app.controller('providerController', function($scope) {
             $scope['flyoutShown' + need] = false;
         } else {
             $scope.needs[need] = true;
-            
-            var emptyAttributes = !$scope.needAttrs[need];
-            if (emptyAttributes) $scope.showNeedFlyout(need);
+            $scope.showNeedFlyout(need);
         }
     }
     
