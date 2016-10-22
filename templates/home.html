@@ -124,8 +124,8 @@
             </form>
         </div>
         <div class="needs">
-            <div ng-repeat="needObj in allNeeds track by needObj.name" ng-class="getClassForNeed(needObj.name)">
-                <div>{{needObj.name}}</div>
+            <div ng-repeat="need in allNeeds" ng-class="getClassForNeed(need.name)">
+                <span>{{need.name}}</span>
             </div>
         </div>
 

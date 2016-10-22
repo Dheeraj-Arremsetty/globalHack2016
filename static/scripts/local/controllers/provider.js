@@ -47,7 +47,6 @@ app.controller('providerController', function($scope) {
                     attributes: ['topics', 'hours']
                 }
             ]
-            return $scope.allNeeds;
     };
         
     $scope.getClassForNeed = function(need) {
