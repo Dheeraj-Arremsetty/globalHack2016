@@ -58,22 +58,7 @@
 
     <div ng-view></div>
 
-    <script type="text/ng-template" id="loginTemplate.htm">
-        <div class="login" ng-controller="loginController">
-            <p>Is login template showing?</p>
-            <form action="javascript:void(0)">
-                <label for="username">Username:</label>
-                <input type="text" name="username" ng-model="login.username" />
-                <label for="password">Password:</label>
-                <input type="password" name="password" ng-model="login.password" />
-                <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
-            </form>
-        </div>
-    </script>
-
-    <script type="text/ng-template" id="providerTemplate.htm">
-        <div ng-controller="providerController">BAR{{providerInfo}}</div>
-    </script>
+    
 
     
     
@@ -92,6 +77,24 @@
     <script src="../scripts/local/controllers/master.js"></script>
     <script src="../scripts/local/controllers/login.js"></script>
     <script src="../scripts/local/controllers/provider.js"></script>
+    
+    
+    <script type="text/ng-template" id="loginTemplate.htm">
+        <div class="login" ng-controller="loginController">
+            <p>Is login template showing?</p>
+            <form action="javascript:void(0)">
+                <label for="username">Username:</label>
+                <input type="text" name="username" ng-model="login.username" />
+                <label for="password">Password:</label>
+                <input type="password" name="password" ng-model="login.password" />
+                <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
+            </form>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="providerTemplate.htm">
+        <div ng-controller="providerController">BAR{{providerInfo}}</div>
+    </script>
 
 </body>
 </html>
