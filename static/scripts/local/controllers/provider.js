@@ -59,6 +59,8 @@ app.controller('providerController', function($scope) {
     
     $scope.sendProviderInfo = function() {};
     
+    $scope.submitProviderNeeds = function() {};
+    
     $scope.showNeedFlyout = function(need) {
         for (var i = 0; i < $scope.allNeeds.length; i++) {
             var currentNeed = $scope.allNeeds[i].name
@@ -73,6 +75,7 @@ app.controller('providerController', function($scope) {
             }
             $scope.backupNeedSelections[need] = $scope.providerInfo.needs[need];
             delete $scope.providerInfo.needs[need];
+            $scope['flyoutShown' + need] = false;
         } else {
             if ($scope.backupNeedSelections && $scope.backupNeedSelections[need]) {
                 $scope.providerInfo.needs[need] = $scope.backupNeedSelections[need];
