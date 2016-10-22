@@ -20,7 +20,7 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
                 password: loginInfo.password, 
                 grant_type: 'password' 
             },
-            { cors=true }
+            { cors: true }
             )
             .then(function (resp) {
                 // Success
