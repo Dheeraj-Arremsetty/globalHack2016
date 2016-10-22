@@ -8,6 +8,7 @@ app.controller('providerController', function($scope) {
     });
     
     $scope.updateProviderInfo = function() {
+        alert('Fetching provider info');
         $scope.get('/provider')
             .then(function(resp) {
                 $scope.providerInfo = resp.data;
