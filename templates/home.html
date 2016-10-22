@@ -48,7 +48,7 @@
 
     <script type="text/ng-template" id="loginTemplate.htm">
         <div class="login" ng-controller="loginController">
-            <form action="javascript:void(0)" class="form-horizontal">
+            <form action="javascript:void(0);" class="form-horizontal">
                 <div class='form-group'>
                     <label for="username" class="col-sm-2 control-label">Username:</label>
                     <div class="col-sm-5">
@@ -71,7 +71,28 @@
     </script>
 
     <script type="text/ng-template" id="providerTemplate.htm">
-        <div ng-controller="providerController">BAR{{providerInfo}}</div>
+        <div ng-controller="providerController">
+            <div class="greeting">
+                Welcome back, {{providerInfo.name}}!
+            </div>
+            <div class="basicInfo">
+                <form action="javascript:void(0);">
+                    <div ng-repeat="(key, value) in providerInfo">
+                        <label for="provider-{{key}}">{{key}}</label>
+                        <input type=text name="provider-{{key}}" ng-model="providerInfo[key]" />
+                    </div> 
+                    <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
+                    <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
+                    <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
+                </form>
+            </div>
+            <div class="needs">
+                <div ng-repeat="need in allNeeds" class="{{providerInfo.needs[need].offered ? 'selected' : 'unselected'}}">
+                    <div>{{need}}</div>
+                </div>
+            </div>
+        
+        </div>
     </script>
 
 </body>
