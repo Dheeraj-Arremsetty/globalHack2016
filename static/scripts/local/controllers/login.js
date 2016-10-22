@@ -17,6 +17,7 @@ app.controller('loginController', function($scope, $http, $location) {
             .then(function (resp) {
                 // Success
                 $scope.$storage.token = resp.data.token;
+            alert(JSON.stringify(resp.data));
                 $scope.loggedInEmployeeId = loginInfo.employeeId;
                 $scope.clearLoginForm();
                 $location.path('/main')
