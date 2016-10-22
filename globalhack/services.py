@@ -22,6 +22,7 @@ class BaseServices:
                           'needs',
                           'provider',
                           'providee',
+                          'register',
                           'register_user' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
@@ -152,7 +153,7 @@ class BaseServices:
         print 'Username: %s' % username
         # print 'Password: %s' % password
 
-        uid = Database().validateUser(username, password)
+        uid = Database().createUser(username, password)
 
         return jsonify({ 'token': uid })
 
