@@ -11,6 +11,26 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         return $scope.$storage.token ? httpPostWithAuth(url, data) : $http.post(url, data);
     }
     
+    $scope.login(loginInfo) {
+        $http.post(
+            $scope.loginUrl, 
+            { 
+                username: loginInfo.username, password: loginInfo.password, grant_type: 'password' }
+            )
+            .then(function (resp) {
+                // Success
+                $scope.$storage.token = resp.data.access_token;
+                $scope.loggedInEmployeeId = loginInfo.employeeId;
+                $scope.clearLoginForm();
+            },
+            function (resp) {
+                // Failure
+                $scope.clearLoginForm();
+                alert("Login failed");
+            });
+
+    }
+    
     function httpGetWithAuth(url) {
         return httpRequestWithAuth('get', url);
     }
@@ -43,5 +63,6 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     }
     
     $scope.$storage = $localStorage;
+    $scope.loginUrl = '/Login';
  
 });
