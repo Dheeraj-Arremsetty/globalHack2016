@@ -48,7 +48,7 @@ app.controller('providerController', function($scope) {
     
     $scope.$storage = $scope.$parent.$storage;
     $scope.getAllNeeds();
-    $scope.providerInfo = {};
+    $scope.providerInfo = {name:''};
     $scope.updateProviderInfo();
  
 });
