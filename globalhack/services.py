@@ -46,7 +46,7 @@ class BaseServices:
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
 
-        for endpoint in [ 'validateUser' ]:
+        for endpoint in [ 'login' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -56,7 +56,7 @@ class BaseServices:
         _d = {i:i*'S' for i in xrange(55)}
         return jsonify(_d)
 
-    def validateUser(self):
+    def login(self):
         params = self.getparams(request)
         username = params.get('username', None)
         password = params.get('password',  None)
