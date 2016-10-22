@@ -16,7 +16,13 @@ class BaseServices:
         self.session_users = {}
         self.app = app
         print '-' * 50
-        for endpoint in [ 'contact', 'login', 'needs', 'provider', 'about', 'providee' ]:
+        for endpoint in [ 'contact',
+                          'about',
+                          'login',
+                          'needs',
+                          'provider',
+                          'providee',
+                          'register' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
