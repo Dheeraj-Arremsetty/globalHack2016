@@ -25,7 +25,7 @@ app.controller('providerController', function($scope) {
             })
             .catch(function(resp) {
                 $scope.providerInfo = { Error: 'There was a problem retrieving the information.' };
-        })
+        });
     };
     
         $scope.getAllNeeds = function() {
@@ -38,6 +38,7 @@ app.controller('providerController', function($scope) {
                 beds: ['count'],
                 training: ['topics', 'hours']
             }
+            return $scope.allNeeds;
     };
         
     $scope.getClassForNeed = function(need) {
