@@ -95,38 +95,37 @@
             Welcome back!
         </div>
         <div class="basicInfo">
-            <form action="javascript:void(0);" ng-disabled="!isEditing">
-                <div>
-                    <label for="providerInfoName">Name: </label>
-                    <input type=text name="providerInfoName" ng-model="providerInfo.name" />
-                </div>
-                <div>
-                    <label for="providerInfoAddress">Street Address: </label>
-                    <input type=text name="providerInfoAddress" ng-model="providerInfo.street_address" />
-                </div>
-                <div>
-                    <label for="providerInfoCity">City: </label>
-                    <input type=text name="providerInfoCity" ng-model="providerInfo.city" />
-                </div>
-                <div>
-                    <label for="providerInfoZip">Zip Code: </label>
-                    <input type=text name="providerInfoZip" ng-model="providerInfo.zip_code" />
-                </div>
-                <div>
-                    <label for="providerInfoDescription">Description: </label>
-                    <input type=text name="providerInfoDescription" ng-model="providerInfo.description" />
-                </div>
-                <div>
-                    <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
-                    <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
-                    <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
-                </div>
+            <form action="javascript:void(0);" ng-disabled="!isEditing" class="form-vertical">
+                <label for="providerInfoName" class="col-sm-2 control-label">Name: </label>
+                <input type=text name="providerInfoName" class="form-control" ng-model="providerInfo.name" />
+                <label for="providerInfoAddress" class="col-sm-2 control-label">Street Address: </label>
+                <input type=text name="providerInfoAddress" class="form-control" ng-model="providerInfo.street_address" />
+                <label for="providerInfoCity" class="col-sm-2 control-label">City: </label>
+                <input type=text name="providerInfoCity" class="form-control" ng-model="providerInfo.city" />
+                <label for="providerInfoZip" class="col-sm-2 control-label">Zip Code: </label>
+                <input type=text name="providerInfoZip" class="form-control" ng-model="providerInfo.zip_code" />
+                <label for="providerInfoDescription" class="col-sm-2 control-label">Description: </label>
+                <input type=text name="providerInfoDescription" ng-model="providerInfo.description" />
+                <button ng-hide="isEditing" class="btn btn-primary" ng-click="isEditing = true">Edit</button>
+                <button ng-show="isEditing" class="btn" ng-click="sendProviderInfo()">Update</button>
+                <button ng-show="isEditing" class="btn btn-primary" ng-click="isEditing = false">Cancel</button>
             </form>
         </div>
-        <div class="needs">
-            <div ng-repeat="need in allNeeds" ng-class="getClassForNeed(need)">
-                <span ng-model="need.name"></span>
+        <div class="needs col-md-3">
+            <div ng-class="getClassForNeed('food')">
+                <span class="needlabel">Food</span>
+                <span class="needLink">&gt;</span>
             </div>
+            <div ng-class="getClassForNeed('beds')">
+                <span class="needlabel">Beds</span>
+                <span class="needLink">&gt;</span>
+            </div>
+            <div ng-class="getClassForNeed('training')">
+                <span class="needlabel">Training</span>
+                <span class="needLink">&gt;</span>
+            </div>
+        </div>
+        <div class="needsflyout col-md-6">
         </div>
 
     </div>
