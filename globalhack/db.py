@@ -49,9 +49,9 @@ class Database(object):
                 return dumps({ 'result': [] })
 
             return dumps({'result': self.client[Database.DATABASE_NAME][collection_name].find()})
-        print 'Trying to get record "%s" for "%s"' % (need_item_id, need_id)
+        print 'Trying to get record "%s" for "%s"' % (need_item_id, collection_name)
         if collection_name not in self.client[Database.DATABASE_NAME].collection_names():
-            raise RecordNotFound('Cannot find record "%s" for "%s"' % (need_item_id, need_id))
+            raise RecordNotFound('Cannot find record "%s" for "%s"' % (need_item_id, collection_name))
 
         item = self.client[Database.DATABASE_NAME][collection_name].find({ '_id': ObjectId(need_item_id)})
         return dumps({ 'result': item })
