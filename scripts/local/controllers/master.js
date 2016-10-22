@@ -76,7 +76,7 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     }
     
     $scope.$storage = $localStorage;
-    $scope.loginUrl = '/Login';
+    $scope.loginUrl = '/login';
     $scope.waitingForLogin = false;
  
 });
