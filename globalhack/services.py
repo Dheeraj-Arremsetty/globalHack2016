@@ -4,6 +4,7 @@ import os
 from flask import jsonify, request, Response, redirect
 
 from .db import Database
+from .errors import BadRequestError, UnauthorizedError
 
 def register_services(app, prefix):
     BaseServices(app, prefix)
@@ -60,6 +61,27 @@ class BaseServices:
         params = self.getparams(request)
         username = params.get('username', None)
         password = params.get('password',  None)
+
+        print 'Username: %s' % username
+        # print 'Password: %s' % password
+
+        uid = Database().validateUser(username, password)
+        if uid == None:
+            raise UnauthorizedError('Unauthorized', status_code=401)
+
+        return jsonify({ 'token': uid })
+
+    def register(self):
+        params = self.getparams(request)
+        username = params.get('username', None)
+        password = params.get('password',  None)
+        confirm_password = params.get('confirm_password',  None)
+
+        if password == None:
+            raise BadRequestError('Password is not specified!', status_code=400)
+
+        if password != confirm_password:
+            raise BadRequestError('Passwords do not match!', status_code=400)
 
         print 'Username: %s' % username
         # print 'Password: %s' % password

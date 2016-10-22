@@ -5,8 +5,9 @@ import os
 import pymongo
 import sys
 
-from flask import redirect, url_for
+from flask import jsonify, redirect, url_for
 
+from globalhack.errors import BadRequestError, UnauthorizedError
 from globalhack.services import register_services
 
 
@@ -31,6 +32,18 @@ def index():
 def root():
     print 'Root entry'
     return redirect(url_for('index'))
+
+@application.errorhandler(UnauthorizedError)
+def handle_unauthorized_error(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
+
+@application.errorhandler(BadRequestError)
+def handle_bad_request_error(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 if __name__ == '__main__':
     Config(application, '')
