@@ -11,43 +11,6 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         return $scope.$storage.token ? httpPostWithAuth(url, data) : $http.post(url, data);
     }
     
-    $scope.submitLogin = function(loginInfo) {
-        $scope.waitingForLogin = true;
-        $http.post(
-            $scope.loginUrl, 
-            { 
-                username: loginInfo.username, 
-                password: loginInfo.password, 
-                grant_type: 'password' 
-            },
-            { cors: true }
-            )
-            .then(function (resp) {
-                // Success
-                $scope.$storage.token = resp.data.token;
-                $scope.loggedInEmployeeId = loginInfo.employeeId;
-                $scope.clearLoginForm();
-            },
-            function (resp) {
-                // Failure
-                $scope.clearLoginForm();
-                alert("Login failed");
-            });
-
-    }
-    
-    $scope.clearLoginForm = function () {
-        $scope.login.employeeId = "";
-        $scope.login.password = "";
-        $scope.waitingForLogin = false;
-    }
-
-    
-    $scope.canSubmitLogin = function() {
-        if (!$scope.login) return false;
-        return $scope.login.username && $scope.login.password && !$scope.waitingForLogin;
-    }
-    
     function httpGetWithAuth(url) {
         return httpRequestWithAuth('get', url);
     }
@@ -64,8 +27,7 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
 
                     alert('Login session has expired. Please enter your credentials.');
 
-                    // Kill the stored token (don't call $scope.logout because there's no need
-                    // to send a logout request to the server).
+                    // Kill the stored token.
                     delete $scope.$storage.token;
 
                     // Return an empty object just to appease anything that might be waiting on
@@ -80,7 +42,5 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     }
     
     $scope.$storage = $localStorage;
-    $scope.loginUrl = '/login';
-    $scope.waitingForLogin = false;
  
 });

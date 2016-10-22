@@ -57,4 +57,19 @@ app.config(function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
 });
 
-    
+app.config(['$routeProvider', function($routeProvider) {
+   $routeProvider.
+   
+   when('/login', {
+      templateUrl: 'loginTemplate.htm', controller: 'loginController'
+   }).
+   
+   when('/main', {
+      templateUrl: 'providerTemplate.htm', controller: 'providerController'
+   }).
+   
+   otherwise({
+      redirectTo: '/login'
+   });
+	
+}]);

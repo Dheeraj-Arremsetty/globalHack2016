@@ -5,28 +5,32 @@
 </head>
     
 <body ng-app="mainApp" ng-controller="master">
-
-    <div class="login" ng-hide="$storage.token">
-        <form action="javascript:void(0)">
-            <label for="username">Username:</label>
-            <input type="text" name="username" ng-model="login.username" />
-            <label for="password">Password:</label>
-            <input type="password" name="password" ng-model="login.password" />
-            <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
-        
-        </form>
     
-    </div>
+    <div ng-view></div>
+    
         
-    <div class="loggedin" ng-show="$storage.token" ng-controller="provider">
-        
-        
-    </div>
+    
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="../scripts/local/app.js"></script>
     <script src="../scripts/local/controllers/master.js"></script>
+        
+    <script type="text/ng-template" id="loginTemplate.htm">
+        <div class="login">
+            <form action="javascript:void(0)">
+                <label for="username">Username:</label>
+                <input type="text" name="username" ng-model="login.username" />
+                <label for="password">Password:</label>
+                <input type="password" name="password" ng-model="login.password" />
+                <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
+            </form>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="providerTemplate.htm">
+        <div>{{message}}</div>
+    </script>
     
 </body>
 
