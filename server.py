@@ -2,6 +2,7 @@
 
 import flask
 import os
+import pymongo
 import sys
 
 from flask import redirect, url_for
@@ -32,7 +33,7 @@ def root():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    Config(application, '/globalhack')
+    Config(application, '')
     dport = int(sys.argv[1]) if len(sys.argv) > 1 else 5050
 
     application.run(host='0.0.0.0',
