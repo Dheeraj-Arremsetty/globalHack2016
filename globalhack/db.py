@@ -42,6 +42,22 @@ class Database(object):
 
         return user
 
+    def createProvider(self, name, address, zipcode, phone_number):
+        return str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
+
+    def getUserInfo(self, uid):
+        if not uid:
+            print 'User %s not specified!' % user
+            return None
+
+        user = self.client[Database.DATABASE_NAME].users.find_one({ '_id': ObjectId(uid) })
+        print 'User: %s' % uid
+        if not user:
+            print 'User "%s" not found!' % user
+            return None
+
+        return user
+
     def getProvidedNeedsFor(self, need_id, need_item_id=None):
         collection_name = 'need_%s' % need_id
         print 'Trying to list collection: %s' % collection_name
