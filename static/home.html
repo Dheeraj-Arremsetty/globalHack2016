@@ -56,10 +56,11 @@
         <div class="row content">
             <p>Do I show up on this page at all?</p>
 
-            <div ng-view>FOOOOO</div>
+            <div ng-view></div>
 
             <script type="text/ng-template" id="loginTemplate.htm">
                 <div class="login" ng-controller="loginController">
+                    <p>Is login template showing?</p>
                     <form action="javascript:void(0)">
                         <label for="username">Username:</label>
                         <input type="text" name="username" ng-model="login.username" />
