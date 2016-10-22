@@ -85,6 +85,19 @@ app.controller('providerController', function($scope) {
             } else {
                 $scope.providerInfo.needs[need] = {};
             }
+            
+            var needAttrs = $scope.providerInfo.needs[need];
+            var emptyAttributes = !needAttrs;
+            if (!emptyAttributes) {
+                emptyAttributes = true;
+                for (var attr in needAttrs) {
+                    if (needAttrs[attr]) {
+                        emptyAttributes = false;
+                        break;
+                    }
+                }
+            }
+            if (emptyAttributes) $scope.showNeedFlyout(need);
         }
     }
     
