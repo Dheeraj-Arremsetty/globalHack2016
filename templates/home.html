@@ -92,10 +92,17 @@
             Welcome back!
         </div>
         <div class="basicInfo">
-            <form action="javascript:void(0);">
-                <label ng-repeat="(key, value) in providerInfo">
-                    {{key}}: <input type=text ng-model="providerInfo[key]" />
-                </label>
+            <form action="javascript:void(0);" ng-disabled="!isEditing">
+                <label for="providerInfoName">Name: </label>
+                <input type=text name="providerInfoName" ng-model="providerInfo.name" />
+                <label for="providerInfoAddress">Street Address: </label>
+                <input type=text name="providerInfoAddress" ng-model="providerInfo.street_address" />
+                <label for="providerInfoCity">City: </label>
+                <input type=text name="providerInfoCity" ng-model="providerInfo.city" />
+                <label for="providerInfoZip">Zip Code: </label>
+                <input type=text name="providerInfoZip" ng-model="providerInfo.zip_code" />
+                <label for="providerInfoDescription">Description: </label>
+                <input type=text name="providerInfoDescription" ng-model="providerInfo.description" />
                 <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
                 <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
                 <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
