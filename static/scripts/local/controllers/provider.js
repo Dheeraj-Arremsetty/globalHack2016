@@ -58,7 +58,8 @@ app.controller('providerController', function($scope) {
     
     $scope.showNeedFlyout = function(need) {
         for (var i = 0; i < $scope.allNeeds.length; i++) {
-            $scope['flyoutShown' + need] = ($scope.allNeeds[i].name === need);
+            var currentNeed = $scope.allNeeds[i].name
+            $scope['flyoutShown' + currentNeed] = (currentNeed === need);
         }
     }
     
