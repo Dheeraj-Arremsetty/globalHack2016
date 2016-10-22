@@ -5,7 +5,7 @@ import os
 import pymongo
 import sys
 
-from flask import jsonify, redirect, url_for
+from flask import jsonify, redirect, render_template, url_for
 
 from globalhack.errors import BadRequestError, InternalError, RecordNotFound, UnauthorizedError
 from globalhack.services import register_services
@@ -28,7 +28,7 @@ def index():
 @application.route('/')
 def root():
     print 'Root entry'
-    return redirect('home.html')
+    return render_template('home.html')
 
 @application.errorhandler(BadRequestError)
 @application.errorhandler(InternalError)
