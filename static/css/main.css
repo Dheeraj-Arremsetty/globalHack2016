@@ -4,6 +4,14 @@
   border-radius: 0;
 }
 
+.main-header {
+  background-color: #47aa42;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: 450px}
 
@@ -16,7 +24,6 @@
 
 /* Set black background color, white text and some padding */
 .navbar-bottom {
-/* background-color: #555; */
   color: gray;
   margin-top: 10px;
   margin-bottom: 20px;
