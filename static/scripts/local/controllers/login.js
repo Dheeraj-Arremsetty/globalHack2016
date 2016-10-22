@@ -2,7 +2,7 @@
 // Must include app.js, ex:
 // <script src="/scripts/local/app.js" />
 
-app.controller('loginController', function($scope, $http, $localStorage, $q) {
+app.controller('loginController', function($scope, $http, $location) {
     $scope.submitLogin = function(loginInfo) {
         $scope.waitingForLogin = true;
         $http.post(
@@ -19,6 +19,7 @@ app.controller('loginController', function($scope, $http, $localStorage, $q) {
                 $scope.$storage.token = resp.data.token;
                 $scope.loggedInEmployeeId = loginInfo.employeeId;
                 $scope.clearLoginForm();
+                $location.path('/main')
             },
             function (resp) {
                 // Failure
