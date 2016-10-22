@@ -16,9 +16,10 @@
 
 /* Set black background color, white text and some padding */
 .navbar-bottom {
-  background-color: #555;
-  color: white;
-  padding: 15px;
+/* background-color: #555; */
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
