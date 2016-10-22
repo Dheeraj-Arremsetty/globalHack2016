@@ -39,6 +39,10 @@ app.controller('providerController', function($scope) {
                 training: ['topics', 'hours']
             }
     }
+        
+        $scope.getClassForNeed(need) {
+            return providerInfo.needs[need].offered ? 'selected' : 'unselected';
+        }
     
     $scope.sendProviderInfo = function() {};
     

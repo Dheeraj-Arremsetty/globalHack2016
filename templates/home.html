@@ -87,7 +87,7 @@
                 </form>
             </div>
             <div class="needs">
-                <div ng-repeat="need in allNeeds" class="{{providerInfo.needs[need].offered ? 'selected' : 'unselected'}}">
+                <div ng-repeat="need in allNeeds" class="{{getClassForNeed(need)}}">
                     <div>{{need}}</div>
                 </div>
             </div>
