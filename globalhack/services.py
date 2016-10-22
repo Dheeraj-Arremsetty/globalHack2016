@@ -2,7 +2,7 @@ import importlib
 import json
 import os
 
-from flask import jsonify, request, Response, redirect, render_template
+from flask import jsonify, request, Response, redirect, render_template, url_for
 
 from .db import Database
 from .errors import BadRequestError, InternalError, RecordNotFound, UnauthorizedError
@@ -11,11 +11,26 @@ from .needs import Needs
 def register_services(app, prefix):
     BaseServices(app, prefix)
 
+    @app.errorhandler(BadRequestError)
+    @app.errorhandler(InternalError)
+    @app.errorhandler(UnauthorizedError)
+    @app.errorhandler(RecordNotFound)
+    def handle_error(error):
+        response = jsonify(error.to_dict())
+        response.status_code = error.status_code
+        return response
+
 class BaseServices:
     def __init__(self, app, prefix):
         self.session_users = {}
         self.app = app
         print '-' * 50
+
+        self.app.add_url_rule(prefix + '/',
+                              'root',
+                              getattr(self, 'root'),
+                              methods=['GET'])
+
         for endpoint in [ 'contact',
                           'about',
                           'login',
@@ -39,6 +54,10 @@ class BaseServices:
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
 
+
+
+    def root(self):
+        return render_template('home.html')
 
     def register_user(self):
         return render_template('register_user.html')
@@ -154,8 +173,7 @@ class BaseServices:
         # print 'Password: %s' % password
 
         uid = Database().createUser(username, password)
-
-        return jsonify({ 'token': uid })
+        return redirect(url_for('root'))
 
     def getparams(self, request):
         return request.form if (request.method == 'POST') else request.args
