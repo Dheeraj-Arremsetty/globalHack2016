@@ -53,4 +53,8 @@ var app = angular.module('mainApp', ['ngStorage'],
     }];
 });
 
+app.config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+});
+
     

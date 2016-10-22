@@ -16,7 +16,11 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         $http.post(
             $scope.loginUrl, 
             { 
-                username: loginInfo.username, password: loginInfo.password, grant_type: 'password' }
+                username: loginInfo.username, 
+                password: loginInfo.password, 
+                grant_type: 'password' 
+            },
+            { cors=true }
             )
             .then(function (resp) {
                 // Success
