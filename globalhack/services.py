@@ -59,8 +59,13 @@ class BaseServices:
 
     def login(self):
         params = self.getparams(request)
-        username = params.get('username', None)
-        password = params.get('password',  None)
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+        else:
+
+            username = params.get('username', None)
+            password = params.get('password',  None)
 
         print 'Username: %s' % username
         # print 'Password: %s' % password
