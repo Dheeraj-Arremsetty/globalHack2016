@@ -26,6 +26,9 @@ class Database(object):
 
         return str(user['_id'])
 
+    def createUser(self, username, password):
+        return str(self.client[Database.DATABASE_NAME].users.insert_one({ 'username': username, 'password': password }).inserted_id)
+
     def getUserInfo(self, uid):
         if not uid:
             print 'User %s not specified!' % user

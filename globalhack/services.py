@@ -16,7 +16,14 @@ class BaseServices:
         self.session_users = {}
         self.app = app
         print '-' * 50
-        for endpoint in [ 'contact', 'login', 'needs', 'provider', 'about', 'providee' ]:
+        for endpoint in [ 'contact',
+                          'about',
+                          'login',
+                          'needs',
+                          'provider',
+                          'providee',
+                          'register',
+                          'register_user' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -32,6 +39,9 @@ class BaseServices:
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
 
+
+    def register_user(self):
+        return render_template('register_user.html')
 
     def about(self):
         return render_template('about.html')
@@ -143,7 +153,7 @@ class BaseServices:
         print 'Username: %s' % username
         # print 'Password: %s' % password
 
-        uid = Database().validateUser(username, password)
+        uid = Database().createUser(username, password)
 
         return jsonify({ 'token': uid })
 

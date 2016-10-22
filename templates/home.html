@@ -31,6 +31,9 @@
             <li>
                 <a href="/contact">Contact</a>
             </li>
+            <li>
+                <a href="/register_user">Register</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -92,18 +95,37 @@
             Welcome back!
         </div>
         <div class="basicInfo">
-            <form action="javascript:void(0);">
-                <div ng-repeat="(key, value) in providerInfo">
-                    <label>{{key}}: <input type=text ng-model="providerInfo[key]" /></label>
+            <form action="javascript:void(0);" ng-disabled="!isEditing">
+                <div>
+                    <label for="providerInfoName">Name: </label>
+                    <input type=text name="providerInfoName" ng-model="providerInfo.name" />
                 </div>
-                <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
-                <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
-                <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
+                <div>
+                    <label for="providerInfoAddress">Street Address: </label>
+                    <input type=text name="providerInfoAddress" ng-model="providerInfo.street_address" />
+                </div>
+                <div>
+                    <label for="providerInfoCity">City: </label>
+                    <input type=text name="providerInfoCity" ng-model="providerInfo.city" />
+                </div>
+                <div>
+                    <label for="providerInfoZip">Zip Code: </label>
+                    <input type=text name="providerInfoZip" ng-model="providerInfo.zip_code" />
+                </div>
+                <div>
+                    <label for="providerInfoDescription">Description: </label>
+                    <input type=text name="providerInfoDescription" ng-model="providerInfo.description" />
+                </div>
+                <div>
+                    <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
+                    <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
+                    <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
+                </div>
             </form>
         </div>
         <div class="needs">
-            <div ng-repeat="(need, dummy) in allNeeds" ng-class="getClassForNeed(need)">
-                <div>{{need}}</div>
+            <div ng-repeat="needObj in allNeeds track by needObj.name" ng-class="getClassForNeed(needObj.name)">
+                <div>{{needObj.name}}</div>
             </div>
         </div>
 
