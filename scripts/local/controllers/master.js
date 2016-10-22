@@ -11,7 +11,8 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         return $scope.$storage.token ? httpPostWithAuth(url, data) : $http.post(url, data);
     }
     
-    $scope.login(loginInfo) {
+    $scope.submitLogin(loginInfo) {
+        $scope.waitingForLogin = true;
         $http.post(
             $scope.loginUrl, 
             { 
@@ -29,6 +30,18 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
                 alert("Login failed");
             });
 
+    }
+    
+    $scope.clearLoginForm = function () {
+        $scope.login.employeeId = "";
+        $scope.login.password = "";
+        $scope.waitingForLogin = false;
+    }
+
+    
+    $scope.canSubmitLogin() {
+        if (!$scope.login) return false;
+        return $scope.login.username && $scope.login.password && !$scope.waitingForLogin;
     }
     
     function httpGetWithAuth(url) {
@@ -64,5 +77,6 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     
     $scope.$storage = $localStorage;
     $scope.loginUrl = '/Login';
+    $scope.waitingForLogin = false;
  
 });
