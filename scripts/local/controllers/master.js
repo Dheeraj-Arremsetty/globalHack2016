@@ -11,7 +11,7 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         return $scope.$storage.token ? httpPostWithAuth(url, data) : $http.post(url, data);
     }
     
-    $scope.submitLogin(loginInfo) {
+    $scope.submitLogin = function(loginInfo) {
         $scope.waitingForLogin = true;
         $http.post(
             $scope.loginUrl, 
@@ -39,7 +39,7 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     }
 
     
-    $scope.canSubmitLogin() {
+    $scope.canSubmitLogin = function() {
         if (!$scope.login) return false;
         return $scope.login.username && $scope.login.password && !$scope.waitingForLogin;
     }
