@@ -9,8 +9,11 @@ app.controller('providerController', function($scope) {
                 if (resp.data && resp.data[0]) {
                    $scope.providerInfo = resp.data[0]; 
                 } else {
-                    $scope.providerInfo = { needs: { food: {}, beds: {}, training: {} } };
+                    $scope.providerInfo = { };
                 }
+                
+                $scope.needs = $scope.providerInfo.needs || {};
+                
             })
             .catch(function(resp) {
                 $scope.providerInfo = { Error: 'There was a problem retrieving the information.' };
@@ -35,7 +38,7 @@ app.controller('providerController', function($scope) {
     };
     
     $scope.isNeedSelected = function(need) {
-        return !!(need && $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need]);
+        return !!(need && $scope.needs && $scope.needs[need]);
     }
         
     $scope.getClassForNeed = function(need) {
@@ -76,17 +79,17 @@ app.controller('providerController', function($scope) {
             if (!$scope.backupNeedSelections) {
                 $scope.backupNeedSelections = {};
             }
-            $scope.backupNeedSelections[need] = $scope.providerInfo.needs[need];
-            delete $scope.providerInfo.needs[need];
+            $scope.backupNeedSelections[need] = $scope.needs[need];
+            delete $scope.needs[need];
             $scope['flyoutShown' + need] = false;
         } else {
             if ($scope.backupNeedSelections && $scope.backupNeedSelections[need]) {
-                $scope.providerInfo.needs[need] = $scope.backupNeedSelections[need];
+                $scope.needs[need] = $scope.backupNeedSelections[need];
             } else {
-                $scope.providerInfo.needs[need] = {};
+                $scope.needs[need] = {};
             }
             
-            var needAttrs = $scope.providerInfo.needs[need];
+            var needAttrs = $scope.needs[need];
             var emptyAttributes = !needAttrs;
             if (!emptyAttributes) {
                 emptyAttributes = true;
