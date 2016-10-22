@@ -48,10 +48,13 @@ app.controller('providerController', function($scope) {
                 }
             ]
     };
+    
+    $scope.isNeedSelected = function(need) {
+        return !!(need && $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need]);
+    }
         
     $scope.getClassForNeed = function(need) {
-        var isOffered = need && $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need]
-        return isOffered ? 'selected' : 'unselected';
+        return $scope.isNeedSelected(need) ? 'selected' : 'unselected';
     }
     
     $scope.sendProviderInfo = function() {};
@@ -60,6 +63,22 @@ app.controller('providerController', function($scope) {
         for (var i = 0; i < $scope.allNeeds.length; i++) {
             var currentNeed = $scope.allNeeds[i].name
             $scope['flyoutShown' + currentNeed] = (currentNeed === need);
+        }
+    }
+    
+    $scope.toggleNeedSelection = function(need) {
+        if ($scope.isNeedSelected(need)) {
+            if (!$scope.backupNeedSelections) {
+                $scope.backupNeedSelections = {};
+            }
+            $scope.backupNeedSelections[need] = $scope.providerInfo.needs[need];
+            delete $scope.providerInfo.needs[need];
+        } else {
+            if ($scope.backupNeedSelections && $scope.backupNeedSelections[need]) {
+                $scope.providerInfo.needs[need] = $scope.backupNeedSelections[need];
+            } else {
+                $scope.providerInfo.needs[need] = {};
+            }
         }
     }
     

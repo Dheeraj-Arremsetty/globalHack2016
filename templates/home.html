@@ -113,16 +113,16 @@
         </div>
         <div class="needs col-md-3">
             <div ng-class="getClassForNeed('food')">
-                <span class="needlabel">Food</span>
-                <a href="javascript:void();" class="needLink" ng-show="getClassForNeed('food') == 'selected'" ng-click="showNeedFlyout('food')">&gt;</a>
+                <a href="javascript:void(0);" class="needlabel" ng-click="toggleNeedSelection('food')">Food</a>
+                <a href="javascript:void(0);" class="needLink" ng-show="getClassForNeed('food') == 'selected'" ng-click="showNeedFlyout('food')">&gt;</a>
             </div>
             <div ng-class="getClassForNeed('beds')">
-                <span class="needlabel">Beds</span>
-                <a href="javascript:void();" class="needLink" ng-show="getClassForNeed('beds') == 'selected'" ng-click="showNeedFlyout('beds')">&gt;</a>
+                <a href="javascript:void(0);" class="needlabel" ng-click="toggleNeedSelection('beds')">Beds</a>
+                <a href="javascript:void(0);" class="needLink" ng-show="getClassForNeed('beds') == 'selected'" ng-click="showNeedFlyout('beds')">&gt;</a>
             </div>
             <div ng-class="getClassForNeed('training')">
-                <span class="needlabel">Training</span>
-                <a href="javascript:void();" class="needLink" ng-show="getClassForNeed('training') == 'selected'" ng-click="showNeedFlyout('training')">&gt;</a>
+                <a href="javascript:void(0);" class="needlabel" ng-click="toggleNeedSelection('training')">Training</a>
+                <a href="javascript:void(0);" class="needLink" ng-show="getClassForNeed('training') == 'selected'" ng-click="showNeedFlyout('training')">&gt;</a>
             </div>
         </div>
         <div class="needsflyout col-md-6" ng-show=flyoutShownfood>
@@ -184,6 +184,11 @@
       </section>
 </script>
 
+    <style>
+        .selected {
+            background-color: blue;
+        }
+    </style>
 
 </body>
 </html>
