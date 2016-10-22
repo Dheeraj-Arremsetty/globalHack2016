@@ -20,8 +20,7 @@ db = conn.cale_users_data
 #db.createCollection("Services")
 
 ## 2. Change path to where dataset csvs are saved
-apath = '/Users/eileenschweiss/Desktop/Sample Dataset/'
-
+apath = 'Sample Dataset/'
 
 # 3. Run
 reader = csv.DictReader(open(apath + 'Services' + '.csv'), delimiter=',')
@@ -29,12 +28,10 @@ for row in reader:
     result = db.Services.insert(row)
     print result
 
-
 reader = csv.DictReader(open(apath + 'Client' + '.csv'), delimiter=',')
 for row in reader:
     result = db.Client.insert(row)
     print result
-
 
 reader = csv.DictReader(open(apath + 'Disabilities' + '.csv'), delimiter=',')
 for row in reader:
@@ -47,24 +44,20 @@ for row in reader:
     result = db.EmploymentEducation.insert(row)
     print result
 
-
 reader = csv.DictReader(open(apath + 'Enrollment' + '.csv'), delimiter=',')
 for row in reader:
     result = db.Enrollment.insert(row)
     print result
-
 
 reader = csv.DictReader(open(apath + 'Exit' + '.csv'), delimiter=',')
 for row in reader:
     result = db.Exit.insert(row)
     print result
 
-
 reader = csv.DictReader(open(apath + 'Funder' + '.csv'), delimiter=',')
 for row in reader:
     result = db.Funder.insert(row)
     print result
-
 
 reader = csv.DictReader(open(apath + 'HealthAndDV' + '.csv'), delimiter=',')
 for row in reader:
@@ -75,8 +68,3 @@ reader = csv.DictReader(open(apath + 'IncomeBenefits' + '.csv'), delimiter=',')
 for row in reader:
     result = db.IncomeBenefits.insert(row)
     print result
-
-
-
-
-
