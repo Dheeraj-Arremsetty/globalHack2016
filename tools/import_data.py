@@ -22,49 +22,19 @@ db = conn.cale_users_data
 ## 2. Change path to where dataset csvs are saved
 apath = 'Sample Dataset/'
 
-# 3. Run
-reader = csv.DictReader(open(apath + 'Services' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Services.insert(row)
-    print result
+DATABASES = [ 'Services',
+              'Client',
+              'Disabilities',
+              'EmploymentEducation',
+              'Enrollment',
+              'Exit',
+              'Funder',
+              'HealthAndDV',
+              'IncomeBenefits',
+              'Services' ]
 
-reader = csv.DictReader(open(apath + 'Client' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Client.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'Disabilities' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Disabilities.insert(row)
-    print result
-
-
-reader = csv.DictReader(open(apath + 'EmploymentEducation' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.EmploymentEducation.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'Enrollment' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Enrollment.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'Exit' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Exit.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'Funder' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.Funder.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'HealthAndDV' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.HealthAndDV.insert(row)
-    print result
-
-reader = csv.DictReader(open(apath + 'IncomeBenefits' + '.csv'), delimiter=',')
-for row in reader:
-    result = db.IncomeBenefits.insert(row)
-    print result
+for database_name in DATABASES:
+    reader = csv.DictReader(open(apath + database_name + '.csv'), delimiter=',')
+    for row in reader:
+        result = db[database_name].insert(row)
+        print result
