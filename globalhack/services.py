@@ -1,10 +1,11 @@
+import importlib
 import json
 import os
 
 from flask import jsonify, request, Response, redirect, render_template
 
 from .db import Database
-from .errors import BadRequestError, RecordNotFound, UnauthorizedError
+from .errors import BadRequestError, InternalError, RecordNotFound, UnauthorizedError
 from .needs import Needs
 
 def register_services(app, prefix):
@@ -47,6 +48,25 @@ class BaseServices:
                                   endpoint,
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
+
+        self.app.add_url_rule(prefix + '/need/<need_id>',
+                              'need',
+                              getattr(self, 'need'),
+                              methods=['POST', 'GET'])
+
+    def need(self, need_id):
+        import_module = 'globalhack.need.%s' % need_id
+        try:
+            need_module = importlib.import_module(import_module)
+        except ImportError:
+            raise InternalError('No need module found for "%s"!' % need_id, status_code=400)
+
+        need_class = getattr(need_module,need_id.title())
+
+        resp = Response(response=need_class().get(),
+                                 status=200,
+                                 mimetype="application/json")
+        return(resp)
 
     def providee(self):
         params = self.getparams(request)

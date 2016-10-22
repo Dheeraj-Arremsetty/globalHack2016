@@ -13,11 +13,7 @@ class GenericError(Exception):
         rv['message'] = self.message
         return rv
 
-class UnauthorizedError(GenericError):
-    pass
-
-class BadRequestError(GenericError):
-    pass
-
-class RecordNotFound(GenericError):
-    pass
+class BadRequestError(GenericError): pass
+class InternalError(GenericError): pass
+class RecordNotFound(GenericError): pass
+class UnauthorizedError(GenericError): pass

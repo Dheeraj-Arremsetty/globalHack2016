@@ -1,4 +1,6 @@
 from bson import ObjectId
+from bson.json_util import dumps
+
 from pymongo import MongoClient
 
 class Database(object):
@@ -36,3 +38,13 @@ class Database(object):
             return None
 
         return user
+
+    def getProvidedNeedsFor(self, need_id):
+        collection_name = 'need_%s' % need_id
+        print 'Trying to list collection: %s' % collection_name
+
+        if collection_name not in self.client[Database.DATABASE_NAME].collection_names():
+            print 'Nothing found in collection %s' % collection_name
+            return dumps({'result': [] })
+
+        return dumps({'result': self.client[Database.DATABASE_NAME][collection_name].find()})
