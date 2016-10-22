@@ -31,3 +31,12 @@ class Database(object):
             return None
 
         return provider
+
+    def getProvideeInfo(self, providee_id):
+        providee = self.client[Database.DATABASE_NAME].providees.find_one({ '_id': providee_id })
+        print 'Providee: %s' % providee
+        if not providee:
+            print 'Providee %s not found!' % providee
+            return None
+
+        return providee

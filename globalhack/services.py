@@ -42,11 +42,26 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        for endpoint in [ 'login', 'needs', 'provider' ]:
+        for endpoint in [ 'login', 'needs', 'provider', 'providee' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
+
+    def providee(self):
+        params = self.getparams(request)
+        providee_id = params.get('providee_id', None)
+
+        print 'Providee id: %s' % providee_id
+        if not providee_id:
+            print 'Providee id "%s" not found!' % providee_id
+            raise RecordNotFound('Providee not found!', status_code=403)
+
+        providee = Database().getProvideeInfo(providee_id)
+        if providee == None:
+            raise RecordNotFound('Providee not found!', status_code=403)
+
+        return jsonify({ 'result': providee })
 
     def provider(self):
         params = self.getparams(request)
@@ -57,7 +72,11 @@ class BaseServices:
             print 'Provider id "%s" not found!' % provider_id
             raise RecordNotFound('Provider not found!', status_code=403)
 
-        return jsonify({ 'result': Database().getProviderInfo(provider_id) })
+        provider = Database().getProviderInfo(provider_id)
+        if provider == None:
+            raise RecordNotFound('Provider not found!', status_code=403)
+
+        return jsonify({ 'result': provider })
 
     def needs(self):
         return jsonify({ 'result': Needs.get_needs() })
