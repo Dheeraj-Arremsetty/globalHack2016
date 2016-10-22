@@ -70,7 +70,30 @@ app.controller('providerController', function($scope) {
         });
     };
     
-    $scope.submitProviderNeeds = function() {};
+    $scope.submitProviderNeeds = function() {
+        var consolidatedNeeds = {};
+        for (var needKey in $scope.needs) {
+            if ($scope.needs[needKey]) {
+                consolidatedNeeds[needKey] = {};
+                for (attrKey in $scope.needAttrs[needKey]) {
+                    consolidatedNeeds[needKey][attrKey] = $scope.needAttrs[needKey][attrKey];
+                }
+            }
+        }
+        
+        var body = {
+            user_id: $scope.$storage.token,
+            needs: consolidatedNeeds
+        }
+        
+        $scope.put($scope.needsUpdateUrl, body)
+            .then(function(resp) {
+            alert('Success');
+        })
+            .catch(function(resp) {
+            alert('Something went wrong');
+        });
+    };
     
     $scope.showNeedFlyout = function(need) {
         for (var i = 0; i < $scope.allNeeds.length; i++) {
