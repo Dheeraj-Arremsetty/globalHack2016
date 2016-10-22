@@ -42,3 +42,14 @@
   }
   .row.content {height:auto;}
 }
+
+.fasize{
+    font-size:300px;
+}
+.colorlightseagreen{
+    color: lightseagreen;
+}
+
+.colorlightcrimson{
+    color: crimson;
+}

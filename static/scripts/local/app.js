@@ -59,7 +59,11 @@ app.config(function($httpProvider) {
 
 app.config(['$routeProvider', function($routeProvider) {
    $routeProvider.
-   
+
+   when('/landing', {
+      templateUrl: 'landing.htm', controller: 'master'
+   }).
+
    when('/login', {
       templateUrl: 'loginTemplate.htm', controller: 'master'
    }).
@@ -69,7 +73,7 @@ app.config(['$routeProvider', function($routeProvider) {
    }).
    
    otherwise({
-      redirectTo: '/login'
+      redirectTo: '/landing'
    });
 	
 }]);

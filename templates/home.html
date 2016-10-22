@@ -7,107 +7,116 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/font-awesome.min.css') }}">
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+
 </head>
 <body ng-app="mainApp" ng-init="providerInfo={name:''}">
-    <nav class="navbar navbar-inverse main-header" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class='navbar-brand main-brand-text'>
+<nav class="navbar navbar-inverse main-header" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class='navbar-brand main-brand-text'>
                 Cale
                 <small>
-                (v0.1)
+                    (v0.1)
                 </small>
-                </a>
-            </div>
-
-            <ul class='nav navbar-nav navbar-right'>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/about">About</a>
-                </li>
-                <li>
-                    <a href="/contact">Contact</a>
-                </li>
-            </ul>
+            </a>
         </div>
-    </nav>
+
+        <ul class='nav navbar-nav navbar-right'>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <!--
     <i class="fa fa-heartbeat fa-5x"></i>
     <xi class="fa fa-medkit fa-5x"></i>
---!>
+-->
 
-    <div class='container'>
-        <div class='content'>
-            <div ng-view/>
-        </div>
+<div class='container'>
+    <div class='content'>
+        <div ng-view/>
     </div>
+</div>
 
-    <hr />
+<hr />
 
-    <nav class="navbar-bottom" role="navigation">
-        <center>{{ config.FOOTER }}</center>
-    </nav>
+<nav class="navbar-bottom" role="navigation">
+    <center>{{ config.FOOTER }}</center>
+</nav>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="../scripts/local/app.js"></script>
-    <script src="../scripts/local/controllers/master.js"></script>
-    <script src="../scripts/local/controllers/login.js"></script>
-    <script src="../scripts/local/controllers/provider.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+<script src="../scripts/local/app.js"></script>
+<script src="../scripts/local/controllers/master.js"></script>
+<script src="../scripts/local/controllers/login.js"></script>
+<script src="../scripts/local/controllers/provider.js"></script>
 
-    <script type="text/ng-template" id="loginTemplate.htm">
-        <div class="login" ng-controller="loginController">
-            <form action="javascript:void(0);" class="form-horizontal">
-                <div class='form-group'>
-                    <label for="username" class="col-sm-2 control-label">Username:</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="username" placeholder="Username" ng-model="login.username" />
-                    </div>
+<script type="text/ng-template" id="loginTemplate.htm">
+    <div class="login" ng-controller="loginController">
+        <form action="javascript:void(0);" class="form-horizontal">
+            <div class='form-group'>
+                <label for="username" class="col-sm-2 control-label">Username:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="username" placeholder="Username" ng-model="login.username" />
                 </div>
-                <div class='form-group'>
-                    <label for="password" class="col-sm-2 control-label">Password:</label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control" placeholder="Password" name="password" ng-model="login.password" />
-                    </div>
+            </div>
+            <div class='form-group'>
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" placeholder="Password" name="password" ng-model="login.password" />
                 </div>
-                <div class='form-group submit-button'>
-                    <div class="col-sm-offset-2 col-sm-5">
-                        <input type="submit" class="btn btn-primary" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
-                    </div>
+            </div>
+            <div class='form-group submit-button'>
+                <div class="col-sm-offset-2 col-sm-5">
+                    <input type="submit" class="btn btn-primary" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
                 </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/ng-template" id="providerTemplate.htm">
+    <div ng-controller="providerController" >
+        <div class="greeting">
+            Welcome back!
+        </div>
+        <div class="basicInfo">
+            <form action="javascript:void(0);">
+                <div ng-repeat="(key, value) in providerInfo">
+                    <label>{{key}}: <input type=text ng-model="providerInfo[key]" /></label>
+                </div>
+                <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
+                <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
+                <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
             </form>
         </div>
-    </script>
-
-    <script type="text/ng-template" id="providerTemplate.htm">
-        <div ng-controller="providerController" >
-            <div class="greeting">
-                Welcome back!
+        <div class="needs">
+            <div ng-repeat="(need, dummy) in allNeeds" ng-class="getClassForNeed(need)">
+                <div>{{need}}</div>
             </div>
-            <div class="basicInfo">
-                <form action="javascript:void(0);">
-                    <div ng-repeat="(key, value) in providerInfo">
-                        <label>{{key}}: <input type=text ng-model="providerInfo[key]" /></label>         
-                    </div> 
-                    <button ng-hide="isEditing" ng-click="isEditing = true">Edit</button>
-                    <button ng-show="isEditing" ng-click="sendProviderInfo()">Update</button>
-                    <button ng-show="isEditing" ng-click="isEditing = false">Cancel</button>
-                </form>
-            </div>
-            <div class="needs">
-                <div ng-repeat="(need, dummy) in allNeeds" ng-class="getClassForNeed(need)">
-                    <div>{{need}}</div>
-                </div>
-            </div>
-        
         </div>
-    </script>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="landing.htm">
+
+    <div class="row">
+        <div  class="col-md-6 text-center" ><a href="#/login"> <i class="fa fa-heartbeat fasize colorlightseagreen"></i></a></div>
+        <div class="col-md-6 text-center"><a href="#/login"><i class="fa fa-medkit fasize colorlightcrimson"></i></a></div>
+    </div>
+</script>
 
 </body>
 </html>
