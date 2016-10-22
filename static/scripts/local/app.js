@@ -71,6 +71,10 @@ app.config(['$routeProvider', function($routeProvider) {
    when('/main', {
       templateUrl: 'providerTemplate.htm', controller: 'master'
    }).
+
+   when('/options', {
+      templateUrl: 'options.htm', controller: 'master'
+   }).
    
    otherwise({
       redirectTo: '/landing'

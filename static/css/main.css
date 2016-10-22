@@ -53,3 +53,6 @@
 .colorlightcrimson{
     color: crimson;
 }
+ul {
+  list-style-type: none;
+}
