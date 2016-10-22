@@ -91,7 +91,7 @@
 <script type="text/ng-template" id="providerTemplate.htm">
     <div ng-controller="providerController" >
         <div class="greeting">
-            Welcome back, {{name}}!
+            Welcome back, {{providerInfo.name}}!
         </div>
         <div class="basicInfo">
             <form action="javascript:void(0);" ng-disabled="!isEditing" class="form-vertical">
@@ -139,8 +139,8 @@
                 <label for="bedsCount" class="control-label">Bed Count: </label>
                 <input type=text name="bedsCount" class="form-control" ng-model="providerInfo.needs[beds].count" />
             </div>
-            <div class="needsflyout col-md-6" ng-show=flyoutShowneducation>
-                Education Info
+            <div class="needsflyout col-md-6" ng-show=flyoutShowntraining>
+                Training Info
                 <label for="trainingTopics" class="control-label">Topics: </label>
                 <input type=text name="trainingTopics" class="form-control" ng-model="providerInfo.needs[training].topics" />
                 <label for="trainingHours" class="control-label">Available Hours: </label>
