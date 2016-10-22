@@ -3,6 +3,8 @@ import os
 
 from flask import jsonify, request, Response, redirect
 
+from .db import Database
+
 def register_services(app, prefix):
     BaseServices(app, prefix)
 
@@ -44,9 +46,27 @@ class BaseServices:
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
 
+        for endpoint in [ 'validateUser' ]:
+            self.app.add_url_rule(prefix + '/%s' % endpoint,
+                                  endpoint,
+                                  getattr(self, endpoint),
+                                  methods=['POST', 'GET'])
+
     def giveJson(self):
         _d = {i:i*'S' for i in xrange(55)}
         return jsonify(_d)
+
+    def validateUser(self):
+        params = self.getparams(request)
+        username = params.get('username', None)
+        password = params.get('password',  None)
+
+        print 'Username: %s' % username
+        # print 'Password: %s' % password
+
+        uid = Database().validateUser(username, password)
+
+        return jsonify({ 'token': uid })
 
     def getparams(self, request):
         return request.form if (request.method == 'POST') else request.args
