@@ -16,7 +16,7 @@ class BaseServices:
         self.session_users = {}
         self.app = app
         print '-' * 50
-        for endpoint in [ 'login', 'needs', 'provider', 'about', 'providee' ]:
+        for endpoint in [ 'contact', 'login', 'needs', 'provider', 'about', 'providee' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -35,6 +35,9 @@ class BaseServices:
 
     def about(self):
         return render_template('about.html')
+
+    def contact(self):
+        return render_template('contact.html')
 
     def need_item_id(self, need_id, need_item_id):
         import_module = 'globalhack.need.%s' % need_id
