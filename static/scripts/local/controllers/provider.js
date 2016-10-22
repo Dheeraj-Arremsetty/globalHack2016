@@ -56,6 +56,12 @@ app.controller('providerController', function($scope) {
     
     $scope.sendProviderInfo = function() {};
     
+    $scope.showNeedFlyout(need) {
+        for (int i = 0; i < $scope.allNeeds.length; i++) {
+            $scope['flyoutShown' + need] = ($scope.allNeeds[i].name === need);
+        }
+    }
+    
     $scope.$storage = $scope.$parent.$storage;
     $scope.getAllNeeds();
     $scope.updateProviderInfo();

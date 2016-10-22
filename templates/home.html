@@ -114,18 +114,25 @@
         <div class="needs col-md-3">
             <div ng-class="getClassForNeed('food')">
                 <span class="needlabel">Food</span>
-                <span class="needLink" ng-show="getClassForNeed('food')">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('food') == 'selected" ng-click="showNeedFlyout('food')">&gt;</span>
             </div>
             <div ng-class="getClassForNeed('beds')">
                 <span class="needlabel">Beds</span>
-                <span class="needLink" ng-show="getClassForNeed('beds')">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('beds') == 'selected" ng-click="showNeedFlyout('beds')">&gt;</span>
             </div>
             <div ng-class="getClassForNeed('training')">
                 <span class="needlabel">Training</span>
-                <span class="needLink" ng-show="getClassForNeed('training')">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('training') == 'selected" ng-click="showNeedFlyout('training')">&gt;</span>
             </div>
         </div>
-        <div class="needsflyout col-md-6">
+        <div class="needsflyout col-md-6" ng-show=flyoutShownfood>
+            Food Info!!!
+        </div>
+        <div class="needsflyout col-md-6" ng-show=flyoutShownbeds>
+            Beds Info!!!
+        </div>
+        <div class="needsflyout col-md-6" ng-show=flyoutShowneducation>
+            Education Info!!!
         </div>
 
     </div>
