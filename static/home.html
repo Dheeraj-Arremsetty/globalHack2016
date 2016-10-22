@@ -12,10 +12,15 @@
             <input type="text" name="username" ng-model="login.username" />
             <label for="password">Password:</label>
             <input type="password" name="password" ng-model="login.password" />
-            <input type="submit" value="Submit" ng-enable="canSubmitLogin()" ng-click="submitLogin(login)"
+            <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
         
         </form>
     
+    </div>
+        
+    <div class="loggedin" ng-show="$storage.token" ng-controller="provider">
+        
+        
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>

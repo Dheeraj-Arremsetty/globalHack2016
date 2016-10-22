@@ -2,7 +2,7 @@
 // Must include app.js, ex:
 // <script src="/scripts/local/app.js" />
 
-app.controller('master', function($scope, $http, $localStorage, $q) {
+app.controller('provider', function($scope, $http, $localStorage, $q) {
     $scope.get = function (url) {
         return $scope.$storage.token ? httpGetWithAuth(url) : $http.get(url);
     };
