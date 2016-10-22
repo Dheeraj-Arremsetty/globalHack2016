@@ -8,7 +8,8 @@
   background-color: #47aa42;
 }
 
-.navbar-inverse .navbar-brand {
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
   color: white;
 }
 
