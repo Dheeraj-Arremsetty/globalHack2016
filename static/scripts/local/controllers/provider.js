@@ -43,7 +43,7 @@ app.controller('providerController', function($scope) {
     };
     
     $scope.isNeedSelected = function(need) {
-        return !!(need && $scope.needs.hasOwnProperty(need));
+        return !!(need && $scope.needs && $scope.needs.hasOwnProperty(need));
     }
         
     $scope.getClassForNeed = function(need) {
