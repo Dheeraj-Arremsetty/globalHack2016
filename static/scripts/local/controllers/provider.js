@@ -13,6 +13,11 @@ app.controller('providerController', function($scope) {
                 }
                 
                 $scope.needs = $scope.providerInfo.needs || {};
+                for (key in $scope.needs) {
+                    for (attr in $scope.needs[key]) {
+                        $scope.needAttrs[key][attr] = $scope.needs[key][attr];
+                    }
+                }
                 
             })
             .catch(function(resp) {
@@ -38,7 +43,7 @@ app.controller('providerController', function($scope) {
     };
     
     $scope.isNeedSelected = function(need) {
-        return !!(need && $scope.needs && $scope.needs[need]);
+        return !!(need && $scope.needs.hasOwnProperty(need);
     }
         
     $scope.getClassForNeed = function(need) {
@@ -76,34 +81,24 @@ app.controller('providerController', function($scope) {
     
     $scope.toggleNeedSelection = function(need) {
         if ($scope.isNeedSelected(need)) {
-            if (!$scope.backupNeedSelections) {
-                $scope.backupNeedSelections = {};
-            }
-            $scope.backupNeedSelections[need] = $scope.needs[need];
-            $scope.needs[need] = null;
+            delete $scope.needs[need];
             $scope['flyoutShown' + need] = false;
         } else {
-            if ($scope.backupNeedSelections && $scope.backupNeedSelections[need]) {
-                $scope.needs[need] = $scope.backupNeedSelections[need];
-            } else {
-                $scope.needs[need] = {};
-            }
+            $scope.needs[need] = true;
             
-            var needAttrs = $scope.needs[need];
-            var emptyAttributes = !needAttrs;
-            if (!emptyAttributes) {
-                emptyAttributes = true;
-                for (var attr in needAttrs) {
-                    if (needAttrs[attr]) {
-                        emptyAttributes = false;
-                        break;
-                    } else alert(attr + ': ' + needAttrs[attr]);
+            var emptyAttributes = true;
+            for (var attr in $scope.needAttrs) {
+                if ($scope.needAttrs[attr]) {
+                    emptyAttributes = false;
+                    break;
                 }
             }
+            
             if (emptyAttributes) $scope.showNeedFlyout(need);
         }
     }
     
+    $scope.needAttrs = {food: {}, beds: {}, training: {}};
     $scope.$storage = $scope.$parent.$storage;
     $scope.infoUpdateUrl = '/providers/info';
     $scope.needsUpdateUrl = '/providers/needs';

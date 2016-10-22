@@ -128,23 +128,23 @@
             <div class="needsflyout col-md-6" ng-show=flyoutShownfood>
                 Food Info
                 <label for="foodType" class="control-label">Type: </label>
-                <input type=text name="foodType" class="form-control" ng-model="needs[food].type" />
+                <input type=text name="foodType" class="form-control" ng-model="needAttrs.food.type" />
                 <label for="foodMeals" class="control-label">Number of Meals: </label>
-                <input type=text name="foodMeals" class="form-control" ng-model="needs[food].number_of_meals" />
+                <input type=text name="foodMeals" class="form-control" ng-model="needAttrs.food.number_of_meals" />
                 <label for="foodExpiration" class="control-label">Expiration Date: </label>
-                <input type=text name="foodExpiration" class="form-control" ng-model="needs[food].expiration" />
+                <input type=text name="foodExpiration" class="form-control" ng-model="needAttrs.food.expiration" />
             </div>
             <div class="needsflyout col-md-6" ng-show=flyoutShownbeds>
                 Beds Info
                 <label for="bedsCount" class="control-label">Bed Count: </label>
-                <input type=text name="bedsCount" class="form-control" ng-model="needs[beds].count" />
+                <input type=text name="bedsCount" class="form-control" ng-model="needAttrs.beds.count" />
             </div>
             <div class="needsflyout col-md-6" ng-show=flyoutShowntraining>
                 Training Info
                 <label for="trainingTopics" class="control-label">Topics: </label>
-                <input type=text name="trainingTopics" class="form-control" ng-model="needs[training].topics" />
+                <input type=text name="trainingTopics" class="form-control" ng-model="needAttrs.training.topics" />
                 <label for="trainingHours" class="control-label">Available Hours: </label>
-                <input type=text name="trainingHours" class="form-control" ng-model="needs[training].hours" />
+                <input type=text name="trainingHours" class="form-control" ng-model="needAttrs.training.hours" />
             </div>
             <input type="submit" class="btn btn-primary" value="Submit" ng-click="submitProviderNeeds()" />
         </form>
