@@ -13,5 +13,7 @@ app.controller('providerController', function($scope) {
                 $scope.providerInfo = { Error: 'There was a problem retrieving the information.' };
         })
     };
+    
+    $scope.updateProviderInfo();
  
 });
