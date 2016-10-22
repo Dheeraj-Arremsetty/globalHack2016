@@ -41,21 +41,14 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        for endpoint in [ 'giveJson', 'add']:
-            self.app.add_url_rule(prefix + '/services/%s' % endpoint,
-                                  endpoint,
-                                  getattr(self, endpoint),
-                                  methods=['POST', 'GET'])
-
-        for endpoint in [ 'login' ]:
+        for endpoint in [ 'login', 'needs' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
 
-    def giveJson(self):
-        _d = {i:i*'S' for i in xrange(55)}
-        return jsonify(_d)
+    def needs(self):
+        return False
 
     def login(self):
         print "I am comming to backendddddddddd"
@@ -98,14 +91,3 @@ class BaseServices:
 
     def getparams(self, request):
         return request.form if (request.method == 'POST') else request.args
-
-    def add(self):
-        #http://0.0.0.0:5050/globalhack/services/add?a=100&b=200
-        params = self.getparams(request)
-        a = params.get('a', 5)
-        b = params.get('b', 10)
-        # print params
-        # a = 5
-        # b= 10
-        c = int(a) + int(b)
-        return str(c)
