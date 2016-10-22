@@ -22,3 +22,12 @@ class Database(object):
             return None
 
         return str(user['_id'])
+
+    def getProviderInfo(self, provider_id):
+        provider = self.client[Database.DATABASE_NAME].providers.find_one({ '_id': provider_id })
+        print 'Provider: %s' % provider
+        if not provider:
+            print 'Provider %s not found!' % provider
+            return None
+
+        return provider

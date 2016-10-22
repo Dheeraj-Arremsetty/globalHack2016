@@ -19,3 +19,5 @@ class UnauthorizedError(GenericError):
 class BadRequestError(GenericError):
     pass
 
+class RecordNotFound(GenericError):
+    pass

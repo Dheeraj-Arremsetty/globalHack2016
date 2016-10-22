@@ -7,7 +7,7 @@ import sys
 
 from flask import jsonify, redirect, url_for
 
-from globalhack.errors import BadRequestError, UnauthorizedError
+from globalhack.errors import BadRequestError, RecordNotFound, UnauthorizedError
 from globalhack.services import register_services
 
 
@@ -42,6 +42,12 @@ def handle_unauthorized_error(error):
     return response
 
 @application.errorhandler(BadRequestError)
+def handle_bad_request_error(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
+
+@application.errorhandler(RecordNotFound)
 def handle_bad_request_error(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code

@@ -4,8 +4,8 @@ import os
 from flask import jsonify, request, Response, redirect, render_template
 
 from .db import Database
+from .errors import BadRequestError, RecordNotFound, UnauthorizedError
 from .needs import Needs
-from .errors import BadRequestError, UnauthorizedError
 
 def register_services(app, prefix):
     BaseServices(app, prefix)
@@ -42,14 +42,25 @@ class BaseServices:
         #                                 MDMDQ Services
         #       ----------------------------------------------------------------------------
         #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
-        for endpoint in [ 'login', 'needs' ]:
+        for endpoint in [ 'login', 'needs', 'provider' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
                                   methods=['POST', 'GET'])
 
+    def provider(self):
+        params = self.getparams(request)
+        provider_id = params.get('provider_id', None)
+
+        print 'Provider id: %s' % provider_id
+        if not provider_id:
+            print 'Provider id "%s" not found!' % provider_id
+            raise RecordNotFound('Provider not found!', status_code=403)
+
+        return jsonify({ 'result': Database().getProviderInfo(provider_id) })
+
     def needs(self):
-        return jsonify({'result': Needs.get_needs()})
+        return jsonify({ 'result': Needs.get_needs() })
 
     def login(self):
         print "I am comming to backendddddddddd"
