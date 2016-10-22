@@ -42,7 +42,8 @@ app.controller('providerController', function($scope) {
     };
         
     $scope.getClassForNeed = function(need) {
-        return $scope.providerInfo.needs[need].offered ? 'selected' : 'unselected';
+        var isOffered = $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need] && $scope.providerInfo.needs[need].offered
+        return isOffered ? 'selected' : 'unselected';
     }
     
     $scope.sendProviderInfo = function() {};
