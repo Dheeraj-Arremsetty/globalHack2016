@@ -5,7 +5,7 @@
 </head>
     
 <body ng-app="mainApp" ng-controller="master">
-    
+
     <div ng-view></div>
     
         
@@ -16,9 +16,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
     <script src="../scripts/local/app.js"></script>
     <script src="../scripts/local/controllers/master.js"></script>
+    <script src="../scripts/local/controllers/login.js"></script>
+    <script src="../scripts/local/controllers/provider.js"></script>
+
         
     <script type="text/ng-template" id="loginTemplate.htm">
-        <div class="login">
+        <div class="login" ng-controller="loginController">
             <form action="javascript:void(0)">
                 <label for="username">Username:</label>
                 <input type="text" name="username" ng-model="login.username" />
@@ -30,7 +33,7 @@
     </script>
     
     <script type="text/ng-template" id="providerTemplate.htm">
-        <div>{{message}}</div>
+        <div ng-controller="providerController">{{message}}</div>
     </script>
     
 </body>
