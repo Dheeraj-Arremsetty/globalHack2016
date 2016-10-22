@@ -50,7 +50,7 @@ app.controller('providerController', function($scope) {
             return $scope.allNeeds;
     };
         
-    $scope.getClassForNeed = function(needName) {
+    $scope.getClassForNeed = function(need) {
         var isOffered = $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need]
         return isOffered ? 'selected' : 'unselected';
     }
