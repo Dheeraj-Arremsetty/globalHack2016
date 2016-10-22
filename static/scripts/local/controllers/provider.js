@@ -15,11 +15,11 @@ app.controller('providerController', function($scope) {
                     zip_code: '99999',
                     description: 'Lorem ipsom dolor sic amet',
                     needs: {
-                        food: {
-                            type: 'stuff',
-                            number_of_meals: '3',
-                            expiration: '2016-10-25'
-                        }
+                            food: {
+                                type: 'stuff',
+                                number_of_meals: '3',
+                                expiration: '2016-10-25'
+                            }
                     }
                 }
             })
@@ -33,16 +33,25 @@ app.controller('providerController', function($scope) {
 //                .then(function(resp) {
 //                    $scope.allNeeds = resp.data.result;
 //            });
-            $scope.allNeeds = {
-                food: ['type', 'number_of_meals', 'expiration'],
-                beds: ['count'],
-                training: ['topics', 'hours']
-            }
+            $scope.allNeeds = [
+                {
+                    name: 'food',
+                    attributes: ['type', 'number_of_meals', 'expiration']
+                },
+                {
+                    name: 'beds',
+                    attributes: ['count']
+                },
+                {
+                    name: 'training',
+                    attributes: ['topics', 'hours']
+                }
+            ]
             return $scope.allNeeds;
     };
         
-    $scope.getClassForNeed = function(need) {
-        var isOffered = $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need] && $scope.providerInfo.needs[need].offered
+    $scope.getClassForNeed = function(needName) {
+        var isOffered = $scope.providerInfo && $scope.providerInfo.needs && $scope.providerInfo.needs[need]
         return isOffered ? 'selected' : 'unselected';
     }
     
