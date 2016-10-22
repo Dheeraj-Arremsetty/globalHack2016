@@ -14,9 +14,6 @@ from globalhack.services import register_services
 class Config():
     def __init__(self, app, prefix):
         self.app = app
-        # register managers and then services
-        print '-' * 50
-        print '                   WSGIPrefix set to %s' % prefix
         self.srvs = register_services(app, prefix)
 
 # create application

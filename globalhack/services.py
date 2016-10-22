@@ -16,33 +16,6 @@ class BaseServices:
         self.session_users = {}
         self.app = app
         print '-' * 50
-        print '                        Getting Elastic Config'
-        # self.connections = self.app.config['Managers'].get('Database').connections
-        # db = self.app.config['Managers'].get('Database')
-        # self.connections = db.connections
-        # con_config = self.connections['rca'][0]
-        # con_config['http_auth'] = (con_config['user'], con_config['password'])
-        # self.parthealth = 'rca-rca'
-        # self.rcaMap = 'rca-rca_map'
-        # self.reflexChain = 'rca-reflex_chain'
-        # self.keymap = {
-        #     'Data Models': 'file_type',
-        #     'Systems': 'source',
-        #     'TSL Gap': 'metric_tslgap',
-        #     'DOS': 'metric_dos',
-        #     'PAL': 'metric_pal',
-        #     'FAC': 'metric_fac',
-        #     'OTD': 'metric_otd'
-        # }
-        print '-' * 50
-        print '                        Elastic is Stretching'
-        print '-' * 50
-        print '                        Register MDMDQ API'
-        print '-' * 50
-        #       ----------------------------------------------------------------------------
-        #                                 MDMDQ Services
-        #       ----------------------------------------------------------------------------
-        #         self.app.add_url_rule(WSGI_PATH_PREFIX + '/services/dates', 'dates', self.dates, methods=['POST'])
         for endpoint in [ 'login', 'needs', 'provider', 'providee' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
