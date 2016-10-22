@@ -11,6 +11,10 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
         return $scope.$storage.token ? $http.post(url, data, getAuthConfig()) : $http.post(url, data);
     }
     
+    $scope.put = function(url, data) {
+        return $scope.$storage.token ? $http.put(url, data, getAuthConfig()) : $http.put(url, data);
+    }
+    
     function httpGetWithAuth(url) {
         return $http.get(url, getAuthConfig())
             .catch(function(resp) {

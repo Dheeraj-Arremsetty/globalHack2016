@@ -42,7 +42,25 @@ app.controller('providerController', function($scope) {
         return $scope.isNeedSelected(need) ? 'selected' : 'unselected';
     }
     
-    $scope.sendProviderInfo = function() {};
+    $scope.sendProviderInfo = function() {
+        var providerWithoutNeeds = {};
+        for (var key in $scope.providerInfo) {
+            if (key === 'needs') continue;
+            providerWithoutNeeds[key] = $scope.providerInfo[key];
+        }
+        var body = {
+            user_id: $scope.$storage.token,
+            info: providerWithoutNeeds
+        };
+        
+        $scope.put($scope.infoUpdateUrl, body)
+            .then(function(resp) {
+            alert('Success');
+        })
+            .catch(function(resp) {
+            alert('Something went wrong');
+        });
+    };
     
     $scope.submitProviderNeeds = function() {};
     
@@ -71,6 +89,8 @@ app.controller('providerController', function($scope) {
     }
     
     $scope.$storage = $scope.$parent.$storage;
+    $scope.infoUpdateUrl = '/providers/info';
+    $scope.needsUpdateUrl = '/providers/needs';
     $scope.getAllNeeds();
     $scope.updateProviderInfo();
  
