@@ -33,16 +33,16 @@ app.controller('providerController', function($scope) {
 //                .then(function(resp) {
 //                    $scope.allNeeds = resp.data.result;
 //            });
-            $acope.allNeeds = {
+            $scope.allNeeds = {
                 food: ['type', 'number_of_meals', 'expiration'],
                 beds: ['count'],
                 training: ['topics', 'hours']
             }
-    }
+    };
         
-        $scope.getClassForNeed(need) {
-            return $scope.providerInfo.needs[need].offered ? 'selected' : 'unselected';
-        }
+    $scope.getClassForNeed = function(need) {
+        return $scope.providerInfo.needs[need].offered ? 'selected' : 'unselected';
+    }
     
     $scope.sendProviderInfo = function() {};
     
