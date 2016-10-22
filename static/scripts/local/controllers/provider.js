@@ -80,7 +80,7 @@ app.controller('providerController', function($scope) {
                 $scope.backupNeedSelections = {};
             }
             $scope.backupNeedSelections[need] = $scope.needs[need];
-            delete $scope.needs[need];
+            $scope.needs[need] = null;
             $scope['flyoutShown' + need] = false;
         } else {
             if ($scope.backupNeedSelections && $scope.backupNeedSelections[need]) {
