@@ -11,6 +11,7 @@
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav > li > a {
   color: white;
+  font-weight: 600;
 }
 
 .submit-button {
@@ -53,6 +54,7 @@
 .colorlightcrimson{
     color: crimson;
 }
+
 ul {
   list-style-type: none;
 }
