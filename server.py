@@ -4,6 +4,7 @@ import flask
 import os
 import pymongo
 import sys
+import uuid
 
 from flask import jsonify, redirect, render_template, url_for
 
@@ -21,6 +22,9 @@ application = flask.Flask(__name__, static_url_path='/static')
 application.config['CONFIG_PATH'] = os.path.join(os.path.basename(__file__), "config/")
 application.config['FOOTER'] = '(c) 2016'
 application.config['TITLE'] = 'Cale | Care and Compassion at Your Fingertips'
+application.config['SESSION_TYPE'] = 'filesystem'
+
+application.secret_key = uuid.uuid4()
 
 if __name__ == '__main__':
     Config(application, '')

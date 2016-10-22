@@ -2,7 +2,7 @@ import importlib
 import json
 import os
 
-from flask import jsonify, request, Response, redirect, render_template, url_for
+from flask import flash, jsonify, request, Response, redirect, render_template, url_for
 
 from .db import Database
 from .errors import BadRequestError, InternalError, RecordNotFound, UnauthorizedError
@@ -164,10 +164,12 @@ class BaseServices:
         confirm_password = params.get('confirm_password',  None)
 
         if password == None:
-            raise BadRequestError('Password is not specified!', status_code=400)
+            flash('Pasword was not specified match!', 'danger')
+            return render_template('register_user.html')
 
         if password != confirm_password:
-            raise BadRequestError('Passwords do not match!', status_code=400)
+            flash('Paswords did not match!', 'danger')
+            return render_template('register_user.html')
 
         print 'Username: %s' % username
         # print 'Password: %s' % password
