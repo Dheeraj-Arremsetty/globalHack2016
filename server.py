@@ -20,6 +20,7 @@ class Config():
 application = flask.Flask(__name__, static_url_path='/static')
 application.config['CONFIG_PATH'] = os.path.join(os.path.basename(__file__), "config/")
 application.config['FOOTER'] = '(c) 2016'
+application.config['TITLE'] = 'Cale | Care and Compassion at Your Fingertips'
 
 @application.route('/globalhack')
 def index():
