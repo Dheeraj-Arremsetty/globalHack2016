@@ -91,7 +91,7 @@
 <script type="text/ng-template" id="providerTemplate.htm">
     <div ng-controller="providerController" >
         <div class="greeting">
-            Welcome back, {{providerInfo.name}}!
+            Welcome back, <span ng-model="providerInfo.name"></span>!
         </div>
         <div class="basicInfo">
             <form action="javascript:void(0);" ng-disabled="!isEditing" class="form-vertical">
