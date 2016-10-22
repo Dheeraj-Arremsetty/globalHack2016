@@ -107,22 +107,22 @@
                 <label for="providerInfoDescription" class="col-sm-2 control-label">Description: </label>
                 <input type=text name="providerInfoDescription" ng-model="providerInfo.description" />
                 <button ng-hide="isEditing" class="btn btn-primary" ng-click="isEditing = true">Edit</button>
-                <button ng-show="isEditing" class="btn" ng-click="sendProviderInfo()">Update</button>
-                <button ng-show="isEditing" class="btn btn-primary" ng-click="isEditing = false">Cancel</button>
+                <button ng-show="isEditing" class="btn btn-primary" ng-click="sendProviderInfo()">Update</button>
+                <button ng-show="isEditing" class="btn" ng-click="isEditing = false">Cancel</button>
             </form>
         </div>
         <div class="needs col-md-3">
             <div ng-class="getClassForNeed('food')">
                 <span class="needlabel">Food</span>
-                <span class="needLink">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('food')">&gt;</span>
             </div>
             <div ng-class="getClassForNeed('beds')">
                 <span class="needlabel">Beds</span>
-                <span class="needLink">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('beds')">&gt;</span>
             </div>
             <div ng-class="getClassForNeed('training')">
                 <span class="needlabel">Training</span>
-                <span class="needLink">&gt;</span>
+                <span class="needLink" ng-show="getClassForNeed('training')">&gt;</span>
             </div>
         </div>
         <div class="needsflyout col-md-6">
