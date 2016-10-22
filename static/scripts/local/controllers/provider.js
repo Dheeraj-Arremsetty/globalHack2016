@@ -41,7 +41,7 @@ app.controller('providerController', function($scope) {
     }
         
         $scope.getClassForNeed(need) {
-            return providerInfo.needs[need].offered ? 'selected' : 'unselected';
+            return $scope.providerInfo.needs[need].offered ? 'selected' : 'unselected';
         }
     
     $scope.sendProviderInfo = function() {};
