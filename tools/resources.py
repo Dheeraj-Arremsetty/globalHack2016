@@ -11,7 +11,7 @@ db = conn.resources
 donationquestions = {}
 documents = ['DonationQuestions', 'ghresource', 'UtilityAssistance']
 
-reader = csv.DictReader(open('/Users/eileenschweiss/Desktop/Resources/'+ 'ghresource' + '.csv'), delimiter=',')
+reader = csv.DictReader(open('Resources/'+ 'ghresource' + '.csv'), delimiter=',')
 for row in reader:
     print row
     db['ghresource'].insert(row)
