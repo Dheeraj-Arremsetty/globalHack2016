@@ -1,9 +1,10 @@
 import json
 import os
 
-from flask import jsonify, request, Response, redirect
+from flask import jsonify, request, Response, redirect, render_template
 
 from .db import Database
+from .needs import Needs
 from .errors import BadRequestError, UnauthorizedError
 
 def register_services(app, prefix):
@@ -48,7 +49,7 @@ class BaseServices:
                                   methods=['POST', 'GET'])
 
     def needs(self):
-        return False
+        return jsonify({'result': Needs.get_needs()})
 
     def login(self):
         print "I am comming to backendddddddddd"
