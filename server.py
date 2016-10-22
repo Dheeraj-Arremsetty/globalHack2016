@@ -20,7 +20,7 @@ class Config():
         self.srvs = register_services(app, prefix)
 
 # create application
-application = flask.Flask(__name__)
+application = flask.Flask(__name__, static_url_path='/static')
 application.config['CONFIG_PATH'] = os.path.join(os.path.basename(__file__), "config/")
 
 @application.route('/globalhack')
@@ -31,7 +31,9 @@ def index():
 @application.route('/')
 def root():
     print 'Root entry'
-    return redirect(url_for('index'))
+    return redirect('home.html')
+
+
 
 @application.errorhandler(UnauthorizedError)
 def handle_unauthorized_error(error):
