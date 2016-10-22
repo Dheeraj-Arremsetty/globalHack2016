@@ -69,7 +69,7 @@ class BaseServices:
         return render_template('contact.html')
 
     def need_item_id(self, need_id, need_item_id):
-        import_module = 'globalhack.need.%s' % need_id
+        import_module = 'globalhack.api.need.%s' % need_id
         try:
             need_module = importlib.import_module(import_module)
         except ImportError:
