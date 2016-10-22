@@ -65,6 +65,33 @@ class BaseServices:
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
 
+    def register_for_help(self):
+        params = self.getparams(request)
+        name = params.get('name', None)
+        zipcode = params.get('zipcode',  None)
+        phone_number = params.get('phone_number',  None)
+
+        if not name:
+            flash('Name was not specified!', 'danger')
+            return render_template('want_to_help.html')
+
+
+        if not zipcode:
+            flash('Zipcode was not specified!', 'danger')
+            return render_template('want_to_help.html')
+
+        if not phone_number:
+            flash('Zipcode was not specified!', 'danger')
+            return render_template('want_to_help.html')
+
+        print 'Name: %s' % name
+        # print 'Password: %s' % password
+
+        Database().registerForHelp(name, zipcode, phone_number)
+        return redirect(url_for('root'))
+
+
+
     def want_to_help(self):
         return render_template('want_to_help.html')
 

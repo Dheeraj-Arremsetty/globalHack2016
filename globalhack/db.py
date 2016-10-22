@@ -45,6 +45,10 @@ class Database(object):
     def createProvider(self, name, address, zipcode, phone_number):
         return str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
 
+    def registerForHelp(self, name, zipcode, phone_number):
+        return str(self.client[Database.DATABASE_NAME].providee.insert_one({ 'name': name,'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
+
+
     def getUserInfo(self, uid):
         if not uid:
             print 'User %s not specified!' % user
