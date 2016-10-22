@@ -58,6 +58,7 @@ class BaseServices:
         return jsonify(_d)
 
     def login(self):
+        print "I am comming to backendddddddddd"
         params = self.getparams(request)
         if request.method == 'POST':
             username = request.form['username']
@@ -68,7 +69,7 @@ class BaseServices:
             password = params.get('password',  None)
 
         print 'Username: %s' % username
-        # print 'Password: %s' % password
+        print 'Password: %s' % password
 
         uid = Database().validateUser(username, password)
         if uid == None:
