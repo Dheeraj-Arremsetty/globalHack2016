@@ -22,7 +22,7 @@ class BaseServices:
                           'needs',
                           'provider',
                           'providee',
-                          'register' ]:
+                          'register_user' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -38,6 +38,9 @@ class BaseServices:
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
 
+
+    def register_user(self):
+        return render_template('register_user.html')
 
     def about(self):
         return render_template('about.html')
