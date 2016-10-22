@@ -50,33 +50,41 @@ class BaseServices:
 
     def providee(self):
         params = self.getparams(request)
-        providee_id = params.get('providee_id', None)
+        uid = params.get('providee_id', None)
 
-        print 'Providee id: %s' % providee_id
-        if not providee_id:
-            print 'Providee id "%s" not found!' % providee_id
-            raise RecordNotFound('Providee not found!', status_code=403)
+        print 'Uid: %s' % uid
+        if not uid:
+            print 'Missing uid!'
+            raise RecordNotFound('Missing uid!', status_code=403)
 
-        providee = Database().getProvideeInfo(providee_id)
-        if providee == None:
-            raise RecordNotFound('Providee not found!', status_code=403)
+        user = Database().getUserInfo(uid)
+        if not user:
+            raise RecordNotFound('User not found!', status_code=403)
 
-        return jsonify({ 'result': providee })
+        providee_of = []
+        if 'providee_of' in user:
+            providee_of = user['providee_of']
+
+        return jsonify({ 'result': providee_of })
 
     def provider(self):
         params = self.getparams(request)
-        provider_id = params.get('provider_id', None)
+        uid = params.get('provider_id', None)
 
-        print 'Provider id: %s' % provider_id
-        if not provider_id:
-            print 'Provider id "%s" not found!' % provider_id
-            raise RecordNotFound('Provider not found!', status_code=403)
+        print 'Uid: %s' % uid
+        if not uid:
+            print 'Missing uid!'
+            raise RecordNotFound('Missing uid!', status_code=403)
 
-        provider = Database().getProviderInfo(provider_id)
-        if provider == None:
-            raise RecordNotFound('Provider not found!', status_code=403)
+        user = Database().getUserInfo(uid)
+        if not user:
+            raise RecordNotFound('User not found!', status_code=403)
 
-        return jsonify({ 'result': provider })
+        provider_of = []
+        if 'provider_of' in user:
+            provider_of = user['provider_of']
+
+        return jsonify({ 'result': provider_of })
 
     def needs(self):
         return jsonify({ 'result': Needs.get_needs() })

@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pymongo import MongoClient
 
 class Database(object):
@@ -23,20 +24,15 @@ class Database(object):
 
         return str(user['_id'])
 
-    def getProviderInfo(self, provider_id):
-        provider = self.client[Database.DATABASE_NAME].providers.find_one({ '_id': provider_id })
-        print 'Provider: %s' % provider
-        if not provider:
-            print 'Provider %s not found!' % provider
+    def getUserInfo(self, uid):
+        if not uid:
+            print 'User %s not specified!' % user
             return None
 
-        return provider
-
-    def getProvideeInfo(self, providee_id):
-        providee = self.client[Database.DATABASE_NAME].providees.find_one({ '_id': providee_id })
-        print 'Providee: %s' % providee
-        if not providee:
-            print 'Providee %s not found!' % providee
+        user = self.client[Database.DATABASE_NAME].users.find_one({ '_id': ObjectId(uid) })
+        print 'User: %s' % uid
+        if not user:
+            print 'User "%s" not found!' % user
             return None
 
-        return providee
+        return user
