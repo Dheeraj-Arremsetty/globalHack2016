@@ -1,0 +1,180 @@
+/**********************************
+GENERAL
+***********************************/
+
+
+body  {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
+/**********************************
+HEADING
+***********************************/
+
+header  {
+  float: left;
+  margin: 0 0 30px 0; /* top, right, bottom, left */
+  padding: 5px 0 0 0;
+  width: 100%;
+}
+
+
+/**********************************
+NAVIGATION
+***********************************/
+
+nav {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+
+nav ul  {
+  list-style-type: none;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li  {
+  display: inline-block;
+}
+
+nav a {
+  font-weight: 800;
+  padding: 15px 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+
+
+
+/**********************************
+FOOTER
+***********************************/
+
+footer  {
+  font-size: 0.75em;
+  text-align: center;
+  clear: both;
+  padding-top: 50px;
+  color: #ccc;
+}
+
+.social-icon  {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+
+/**********************************
+PAGE: ABOUT
+***********************************/
+
+
+.profile-photo  {
+  clear: both;
+  display: block;
+  max-width: 150px;
+  margin: 0 auto 30px;
+  border-radius: 100%; /* Defines the roundness of a border corner. Accepts any CSS length unit. */
+}
+
+/**********************************
+COLORS
+***********************************/
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.contact-info a {
+  display: block;
+  min-height: 20px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  padding: 0 0 0 30px;
+  margin: 0 0 10px;
+}
+
+
+.contact-info li.phone a {
+  background-image: url('../img/phone.png'); /* the ... is to make contection with another map */
+}
+
+.contact-info li.mail a {
+  background-image: url('../img/mail.png'); /* the ... is to make contection with another map */
+}
+
+.contact-info li.twitter a {
+  background-image: url('../img/twitter.png'); /* the ... is to make contection with another map */
+}
+
+
+/**********************************
+COLORS
+***********************************/
+
+
+
+/* site body */
+body {
+  background-color: #4e4e4e;
+  color: #999;
+}
+
+/* green header */
+header {
+  background: #47aa42;
+  border-color: #47aa42;
+}
+
+/* nav background on mobile */
+nav {
+  background: #47aa42;
+}
+
+/* links */
+a {
+  color: #6ab47b;
+}
+
+/* nav link */
+nav a, nav a:visited {
+  color: #fff;
+}
+
+/* selected nav link */
+nav a.selected, nav a:hover {
+  color: #32673f;
+}
+
+
+
+
+
+
+
