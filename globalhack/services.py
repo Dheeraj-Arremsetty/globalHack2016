@@ -1,7 +1,7 @@
 import importlib
 import json
 import os
-
+# import math.ra
 from flask import flash, jsonify, request, Response, redirect, render_template, url_for
 
 from .db import Database
@@ -30,6 +30,14 @@ class BaseServices:
                               'root',
                               getattr(self, 'root'),
                               methods=['GET'])
+        self.app.add_url_rule(prefix + '/food.html',
+                              'food.html',
+                              getattr(self, 'food_ui'),
+                              methods=['GET'])
+        self.app.add_url_rule(prefix + '/help.html',
+                              'help.html',
+                              getattr(self, 'help_ui'),
+                              methods=['GET'])
 
         for endpoint in [ 'contact',
                           'about',
@@ -40,7 +48,8 @@ class BaseServices:
                           'register',
                           'register_user',
                           'want_to_help',
-                          'register_provider' ]:
+                          'register_provider',
+                          'register_user','food' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -61,6 +70,12 @@ class BaseServices:
 
     def root(self):
         return render_template('home.html')
+
+    def food_ui(self):
+        return render_template('food.html')
+
+    def help_ui(self):
+        return render_template('needHelp.html')
 
     def register_user(self):
         return render_template('register_user.html')
@@ -139,6 +154,13 @@ class BaseServices:
 
     def needs(self):
         return jsonify({ 'result': Needs.get_needs() })
+
+    def food(self):
+        list = []
+        print "In food function"
+        for i in range(5):
+            list.append({"name": "name"+str(i), "address": "address"+str(1), "number_of_meals": str(i), "available_till": "MM-DD-YYYY"})
+        return jsonify({ 'result': list })
 
     def login(self):
         print "I am comming to backendddddddddd"
