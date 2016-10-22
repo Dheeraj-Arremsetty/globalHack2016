@@ -41,6 +41,7 @@ app.controller('loginController', function($scope, $http, $location) {
         return $scope.login.username && $scope.login.password && !$scope.waitingForLogin;
     }
     
+    $scope.$storage = $scope.$parent.$storage;
     $scope.loginUrl = '/login';
     $scope.waitingForLogin = false;
  
