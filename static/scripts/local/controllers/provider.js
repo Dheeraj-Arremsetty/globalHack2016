@@ -13,7 +13,7 @@ app.controller('providerController', function($scope) {
                     city: 'nowhere',
                     state: 'MM',
                     zip_code: '99999',
-                    description: 'Lorem ipsom dolor sic amet'
+                    description: 'Lorem ipsom dolor sic amet',
                     needs: {
                         food: {
                             type: 'stuff',
