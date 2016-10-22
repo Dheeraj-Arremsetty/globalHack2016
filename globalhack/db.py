@@ -39,12 +39,20 @@ class Database(object):
 
         return user
 
-    def getProvidedNeedsFor(self, need_id):
+    def getProvidedNeedsFor(self, need_id, need_item_id=None):
         collection_name = 'need_%s' % need_id
         print 'Trying to list collection: %s' % collection_name
 
-        if collection_name not in self.client[Database.DATABASE_NAME].collection_names():
-            print 'Nothing found in collection %s' % collection_name
-            return dumps({'result': [] })
+        if not need_item_id:
+            if collection_name not in self.client[Database.DATABASE_NAME].collection_names():
+                print 'Nothing found in collection %s' % collection_name
+                return dumps({ 'result': [] })
 
-        return dumps({'result': self.client[Database.DATABASE_NAME][collection_name].find()})
+            return dumps({'result': self.client[Database.DATABASE_NAME][collection_name].find()})
+        print 'Trying to get record "%s" for "%s"' % (need_item_id, need_item_id)
+        if collection_name not in self.client[Database.DATABASE_NAME].collection_names():
+            raise RecordNotFound('Cannot find record "%s" for "%s"' % (need_item_id, need_id))
+
+        item = self.client[Database.DATABASE_NAME][collection_name].find({ '_id': ObjectId(need_item_id)})
+        return dumps({ 'result': item })
+

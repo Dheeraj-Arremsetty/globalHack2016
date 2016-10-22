@@ -27,6 +27,25 @@ class BaseServices:
                               getattr(self, 'need'),
                               methods=['POST', 'GET'])
 
+        self.app.add_url_rule(prefix + '/need/<need_id>/<need_item_id>',
+                              'need_item_id',
+                              getattr(self, 'need_item_id'),
+                              methods=['GET', 'DELETE', 'PUT'])
+
+    def need_item_id(self, need_id, need_item_id):
+        import_module = 'globalhack.need.%s' % need_id
+        try:
+            need_module = importlib.import_module(import_module)
+        except ImportError:
+            raise InternalError('No need module found for "%s"!' % need_id, status_code=400)
+
+        need_class = getattr(need_module,need_id.title())
+
+        resp = Response(response=getattr(need_class(),request.method.lower())(need_item_id),
+                                 status=200,
+                                 mimetype="application/json")
+        return(resp)
+
     def need(self, need_id):
         import_module = 'globalhack.need.%s' % need_id
         try:
@@ -36,7 +55,7 @@ class BaseServices:
 
         need_class = getattr(need_module,need_id.title())
 
-        resp = Response(response=need_class().get(),
+        resp = Response(response=getattr(need_class(),request.method.lower())(),
                                  status=200,
                                  mimetype="application/json")
         return(resp)
