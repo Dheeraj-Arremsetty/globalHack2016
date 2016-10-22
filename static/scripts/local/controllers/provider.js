@@ -86,7 +86,7 @@ app.controller('providerController', function($scope) {
         } else {
             $scope.needs[need] = true;
             
-            var emptyAttributes = !$scope.needAttrs[attr];
+            var emptyAttributes = !$scope.needAttrs[need];
             if (emptyAttributes) $scope.showNeedFlyout(need);
         }
     }
