@@ -2,7 +2,7 @@
 // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js" />
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js" />
 
-var app = angular.module('mainApp', ['ngStorage'],
+var app = angular.module('mainApp', ['ngStorage', 'ngRoute'],
     function ($httpProvider) {
     // Code to make POST requests use url-encoded string instead of JSON
     // from http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/
