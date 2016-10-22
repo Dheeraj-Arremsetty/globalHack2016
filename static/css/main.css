@@ -1,6 +1,6 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
-  margin-bottom: 0;
+  margin-bottom: 10;
   border-radius: 0;
 }
 
@@ -15,7 +15,7 @@
 }
 
 /* Set black background color, white text and some padding */
-footer {
+.navbar-bottom {
   background-color: #555;
   color: white;
   padding: 15px;

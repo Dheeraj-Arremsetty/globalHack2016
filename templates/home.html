@@ -10,26 +10,38 @@
 </head>
 <body ng-app="mainApp">
 
+    <nav class='navbar navbar-default' role='navigation'>
+    <div class='navbar-header'></div>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-
-                <a class="navbar-brand" href="#">Logo</a>
+                <a class='navbar-brand'>
+                Cale
+                <small>
+                (v0.1)
+                </small>
+                </a>
             </div>
 
         </div>
     </nav>
-  
-    
-    <div ng-view></div>
+
+    <div class='container'>
+        <div class='content'>
+            <div ng-view/>
+        </div>
+    </div>
+
+    <hr />
+
+    <nav class="navbar navbar-default navbar-bottom" role="navigation">
+      <div class="container">
+        <center><p>{{ config.FOOTER }}</p></center>
+      </div>
+    </nav>
 
 
-
-    <footer class="container-fluid text-center">
-        <p>{{ config.FOOTER }}</p>
-    </footer>
-    
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
