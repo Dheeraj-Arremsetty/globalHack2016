@@ -9,7 +9,7 @@ app.controller('providerController', function($scope) {
                 if (resp.data && resp.data[0]) {
                    $scope.providerInfo = resp.data[0]; 
                 } else {
-                    $scope.providerInfo = { needs: { food: {}, beds: {}, training{} } };
+                    $scope.providerInfo = { needs: { food: {}, beds: {}, training: {} } };
                 }
             })
             .catch(function(resp) {
