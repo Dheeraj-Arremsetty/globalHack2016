@@ -164,11 +164,11 @@ class BaseServices:
         confirm_password = params.get('confirm_password',  None)
 
         if password == None:
-            flash('Pasword was not specified match!', 'danger')
+            flash('Password was not specified!', 'danger')
             return render_template('register_user.html')
 
         if password != confirm_password:
-            flash('Paswords did not match!', 'danger')
+            flash('Passwords did not match!', 'danger')
             return render_template('register_user.html')
 
         print 'Username: %s' % username
