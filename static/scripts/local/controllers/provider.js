@@ -94,7 +94,7 @@ app.controller('providerController', function($scope) {
                     if (needAttrs[attr]) {
                         emptyAttributes = false;
                         break;
-                    }
+                    } else alert(attr + ': ' + needAttrs[attr]);
                 }
             }
             if (emptyAttributes) $scope.showNeedFlyout(need);
