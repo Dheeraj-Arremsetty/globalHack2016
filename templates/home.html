@@ -125,7 +125,7 @@
         </div>
         <div class="needs">
             <div ng-repeat="need in allNeeds" ng-class="getClassForNeed(need)">
-                <span>{{need.name}}</span>
+                <span ng-model="need.name"></span>
             </div>
         </div>
 
