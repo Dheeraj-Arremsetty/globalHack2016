@@ -1,6 +1,6 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
-  margin-bottom: 10;
+  margin-bottom: 40px;
   border-radius: 0;
 }
 
@@ -10,6 +10,10 @@
 
 .navbar-inverse .navbar-brand {
   color: white;
+}
+
+.submit-button {
+  margin-top: 20px;
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */

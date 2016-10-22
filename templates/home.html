@@ -45,16 +45,27 @@
     <script src="../scripts/local/controllers/master.js"></script>
     <script src="../scripts/local/controllers/login.js"></script>
     <script src="../scripts/local/controllers/provider.js"></script>
-    
-    
+
     <script type="text/ng-template" id="loginTemplate.htm">
         <div class="login" ng-controller="loginController">
-            <form action="javascript:void(0)">
-                <label for="username">Username:</label>
-                <input type="text" name="username" ng-model="login.username" />
-                <label for="password">Password:</label>
-                <input type="password" name="password" ng-model="login.password" />
-                <input type="submit" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
+            <form action="javascript:void(0)" class="form-horizontal">
+                <div class='form-group'>
+                    <label for="username" class="col-sm-2 control-label">Username:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="username" placeholder="Username" ng-model="login.username" />
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for="password" class="col-sm-2 control-label">Password:</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" placeholder="Password" name="password" ng-model="login.password" />
+                    </div>
+                </div>
+                <div class='form-group submit-button'>
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <input type="submit" class="btn btn-primary" value="Submit" ng-enabled="canSubmitLogin()" ng-click="submitLogin(login)"
+                    </div>
+                </div>
             </form>
         </div>
     </script>
