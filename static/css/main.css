@@ -64,6 +64,11 @@
     box-shadow: 10px 10px 5px #cccccc;
 }
 
+.landing-button:hover {
+    border-color: gray;
+    box-shadow: 8px 8px 3px #999999;
+}
+
 .fasize{
     font-size:300px;
 }
