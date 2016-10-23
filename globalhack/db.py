@@ -43,11 +43,16 @@ class Database(object):
         return user
 
     def createProvider(self, name, address, zipcode, phone_number):
-        return str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
+        id = str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
+        self.client[Database.DATABASE_NAME].providers.create_index("zipcode")
+        return id
 
     def registerForHelp(self, name, zipcode, phone_number):
         return str(self.client[Database.DATABASE_NAME].providee.insert_one({ 'name': name,'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
 
+    def findProvidersWithZipcodes(zipcode):
+        self.client[Database.DATABASE_NAME].providers \
+            .find({ zipcode: { "$in" : zipcode } }).limit(5)
 
     def getUserInfo(self, uid):
         if not uid:

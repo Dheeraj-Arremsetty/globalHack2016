@@ -88,9 +88,18 @@ class BaseServices:
         # print 'Password: %s' % password
 
         Database().registerForHelp(name, zipcode, phone_number)
+
+        close_zipcodes = Proximity.find_close_zipcodes(zipcode)
+        matching_providers = Database().findProvidersWithZipcodes(close_zipcodes)
+
+        if len(matching_providers > 0):
+            for matching_provider in matching_providers:
+                message = 'Hi %s,\nCale here and %s needs your help! Please give them a call at %s at your eraliest convenience!' % (matching_provider['name'],
+                          name,
+                          phone_number)
+                Notifier.sendMessage(message, matching_provider['phone_number'])
+
         return redirect(url_for('root'))
-
-
 
     def want_to_help(self):
         return render_template('want_to_help.html')

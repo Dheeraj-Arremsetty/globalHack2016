@@ -33,13 +33,13 @@ class Proximity(object):
 
     @staticmethod
     def find_close_zipcodes(zip_code, max_distance = 15):
+        if len(Proximity.zipcode_db) == 0:
+            Proximity.read_data()
+
         max_distance_in_meters = 1609.34 * max_distance
         lat1, lon1 = Proximity.zipcode_db[zip_code]
         matching_zipcodes = []
         for zip_code2 in Proximity.zipcode_db.keys():
-            if zip_code2 == zip_code:
-                continue
-
             lat2, lon2 = Proximity.zipcode_db[zip_code2]
 
             distance = Proximity.distance(lat1, lon1, lat2, lon2)
@@ -48,6 +48,8 @@ class Proximity(object):
 
         for matching_zipcode in matching_zipcodes:
             print 'Matching: %s' % matching_zipcode
+
+        return matching_zipcodes
 
 if __name__ == '__main__':
     Proximity.read_data()
