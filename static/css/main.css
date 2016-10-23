@@ -1,6 +1,6 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   border-radius: 0;
 }
 
@@ -59,9 +59,8 @@
     border-width: thin;
     border-style: solid;
     border-radius: 5rem;
-    padding-left: 10%;
-    padding-right: 10%;
     box-shadow: 10px 10px 5px #cccccc;
+    margin-top: 5rem;
 }
 
 .landing-button:hover {
