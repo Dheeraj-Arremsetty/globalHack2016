@@ -70,5 +70,17 @@ app.controller('master', function($scope, $http, $localStorage, $q) {
     }
     
     $scope.$storage = $localStorage;
+    
+    $scope.volCount = '(Still Counting)';
+    $scope.connCount = '(Still Counting)';
+    
+    $http.get('/counters/volunteers').then(function(resp) {
+        $scope.volCount = resp.data.count;
+    });
+    
+    $http.get('/counters/connections').then(function(resp) {
+        $scope.connCount = resp.data.count;
+    });
+    
  
 });
