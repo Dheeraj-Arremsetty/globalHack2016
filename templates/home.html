@@ -191,8 +191,8 @@
         <div class="col-md-6 text-center"><a href="/want_to_help"><i class="fa fa-medkit fasize colorlightcrimson"></i></a></div>
     </div>
     <div class='countersection' ng-controller="counterController">
-            <div>Our <span class="counter volunteercount">{{ volCount }} volunteers</span> have helped us to make</div>
-            <div class="counter connectioncount">{{ connCount }} connections!</div>
+            <div>Our <span class="counter volunteercount"><span ng-model="volCount"></span> volunteers</span> have helped us to make</div>
+            <div class="counter connectioncount"><span ng-model="connCount"></span> connections!</div>
         </div>
 </script>
 
