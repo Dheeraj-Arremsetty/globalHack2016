@@ -59,6 +59,9 @@
     border-width: thin;
     border-style: solid;
     border-radius: 5rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 10px 10px 5px #cccccc;
 }
 
 .fasize{
