@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+{{ super() }}
+
+{% for key in result %}
+
+            <tr>
+               <th> {{ key }} </th>
+
+            </tr>
+
+         {% endfor %}
+
+
+
+
+<div style="background:#4e4e4e;">
+    <ul id="gallery" width="100%">
+
+        {% for data in result %}
+        <li width="100%">
+
+            <!--<a href="request.html"><img src="img/smiley.png" alt="Volunteer: Katy"></a>-->
+            {% for value in data['willing_to_provide'] %}
+                {{ result['willing_to_provide'] }}
+                <a href="#">  <img src="img/{{value}}.png" class="imagedropdown"></a>
+            {% endfor %}
+
+        <li/>
+        {% endfor %}
+
+
+
+
+        <!--<li width="100%">-->
+            <!--<a href="request.html"><img src="img/smiley.png" alt="Volunteer: Katy"></a>-->
+            <!--<a href="#">  <img src="img/food.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bed.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bath.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/lesbiansymbol.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+
+        <!--<li width="100%">-->
+            <!--<a href="http://twitter.com/nickrp"><img src="img/smiley.png"></a>-->
+            <!--<a href="#">  <img src="../img/laundry.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/clotheshanger.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/lesbiansymbol.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+
+        <!--<li width="100%">-->
+            <!--<a href="http://twitter.com/nickrp"><img src="img/smiley.png"></a>-->
+            <!--<a href="#">  <img src="../img/cutlery.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bed.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/laundry.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+
+        <!--<li width="100%">-->
+            <!--<a href="http://twitter.com/nickrp"><img src="img/smiley.png"></a>-->
+            <!--<a href="#">  <img src="../img/cutlery.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bed.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bath.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/clotheshanger.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/lesbiansymbol.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+        <!--<li width="100%">-->
+            <!--<a href="http://twitter.com/nickrp"><img src="img/smiley.png"></a>-->
+            <!--<a href="#">  <img src="../img/cutlery.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="../img/bed.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+        <!--<li width="100%">-->
+            <!--<a href="http://twitter.com/nickrp"><img src="img/smiley.png"></a>-->
+            <!--<a href="#">  <img src="img/laundry.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="img/sewing.png" class="imagedropdown"></a>-->
+            <!--<a href="#">  <img src="img/lesbiansymbol.png" class="imagedropdown"></a>-->
+        <!--<li/>-->
+
+
+
+    </ul>
+</div>
+
+
+{% endblock %}
