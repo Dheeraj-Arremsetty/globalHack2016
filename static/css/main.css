@@ -63,12 +63,12 @@
 
 .has-need, 
 .has-need a {
-    color: lightseagreen !important;
+    color: lightseagreen;
 }
 
 .volunteer,
 .volunteer a {
-    color: crimson !important;
+    color: crimson;
 }
 
 ul {
