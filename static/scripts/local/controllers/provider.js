@@ -32,13 +32,21 @@ app.controller('providerController', function($scope) {
                     attributes: ['type', 'number_of_meals', 'expiration']
                 },
                 {
-                    name: 'beds',
-                    attributes: ['count']
+                    name: 'shelter',
+                    attributes: ['bed_count']
                 },
                 {
-                    name: 'training',
+                    name: 'clothes',
                     attributes: ['topics', 'hours']
-                }
+                },
+                {
+                    name: 'education',
+                    attributes: ['topics', 'hours']
+                },
+                {
+                    name: 'healthcare',
+                    attributes: ['topics', 'hours']
+                },
             ]
     };
     
@@ -112,7 +120,7 @@ app.controller('providerController', function($scope) {
         }
     }
     
-    $scope.needAttrs = {food: {}, beds: {}, training: {}};
+    $scope.needAttrs = {food: {}, shelter: {}, clothes: {}, education: {}, healthcare: {}};
     $scope.$storage = $scope.$parent.$storage;
     $scope.infoUpdateUrl = '/providers/info';
     $scope.needsUpdateUrl = '/providers/needs';
