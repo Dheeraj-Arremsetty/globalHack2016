@@ -52,6 +52,11 @@
     text-decoration: none;
 }
 
+.landing-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .fasize{
     font-size:300px;
 }
