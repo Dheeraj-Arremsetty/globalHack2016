@@ -2,9 +2,10 @@
 
 import csv
 import math
+import os
 
 class Proximity(object):
-    db_path = '../data/zipcodes.txt'
+    db_path = os.path.dirname(__file__) + '/../data/zipcodes.txt'
 
     zipcode_db = {}
 

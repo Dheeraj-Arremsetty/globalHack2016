@@ -7,6 +7,8 @@ from flask import flash, jsonify, request, Response, redirect, render_template, 
 from .db import Database
 from .errors import BadRequestError, InternalError, RecordNotFound, UnauthorizedError
 from .needs import Needs
+from .notifier import Notifier
+from .proximity import Proximity
 
 def register_services(app, prefix):
     BaseServices(app, prefix)
@@ -92,7 +94,7 @@ class BaseServices:
         close_zipcodes = Proximity.find_close_zipcodes(zipcode)
         matching_providers = Database().findProvidersWithZipcodes(close_zipcodes)
 
-        if len(matching_providers > 0):
+        if matching_providers.count() > 0:
             for matching_provider in matching_providers:
                 message = 'Hi %s,\nCale here and %s needs your help! Please give them a call at %s at your eraliest convenience!' % (matching_provider['name'],
                           name,

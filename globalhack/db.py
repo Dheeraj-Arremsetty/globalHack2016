@@ -1,3 +1,5 @@
+import array
+
 from bson import ObjectId
 from bson.json_util import dumps
 
@@ -50,9 +52,9 @@ class Database(object):
     def registerForHelp(self, name, zipcode, phone_number):
         return str(self.client[Database.DATABASE_NAME].providee.insert_one({ 'name': name,'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
 
-    def findProvidersWithZipcodes(zipcode):
-        self.client[Database.DATABASE_NAME].providers \
-            .find({ zipcode: { "$in" : zipcode } }).limit(5)
+    def findProvidersWithZipcodes(self, zipcodes):
+        return self.client[Database.DATABASE_NAME].providers \
+                   .find({ 'zipcode': { "$in" : zipcodes } }).limit(5)
 
     def getUserInfo(self, uid):
         if not uid:
