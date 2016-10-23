@@ -44,8 +44,8 @@ class Database(object):
 
         return user
 
-    def createProvider(self, name, address, zipcode, phone_number):
-        id = str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
+    def createProvider(self, name, address, zipcode, phone_number,createProvider):
+        id = str(self.client[Database.DATABASE_NAME].providers.insert_one({ 'name': name,'address': address, 'zipcode': zipcode, 'phone_number': phone_number,'willing_to_provide':createProvider }).inserted_id)
         self.client[Database.DATABASE_NAME].providers.create_index("zipcode")
         return id
 

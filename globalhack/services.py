@@ -226,6 +226,29 @@ class BaseServices:
         address = params.get('address',  None)
         zipcode = params.get('zipcode',  None)
         phone_number = params.get('phone_number',  None)
+        listTags = []
+        financial_need = params.get('financial_need',  None)
+        food_need = params.get('food_need', None)
+        shelter_need = params.get('shelter_need', None)
+        clothes_need = params.get('clothes_need', None)
+        education_need = params.get('education_need', None)
+        healthcare_need = params.get('healthcare_need', None)
+        other_need = params.get('other_need', None)
+        if financial_need:
+            listTags.append("financial")
+        if food_need:
+            listTags.append("food")
+        if shelter_need:
+            listTags.append("shelter")
+        if clothes_need:
+            listTags.append("clothes")
+        if education_need:
+            listTags.append("education")
+        if healthcare_need:
+            listTags.append("healthcare")
+        if other_need:
+            listTags.append("other")
+
 
         if not name:
             flash('Name was not specified!', 'danger')
@@ -246,7 +269,7 @@ class BaseServices:
         print 'Name: %s' % name
         # print 'Password: %s' % password
 
-        Database().createProvider(name, address, zipcode, phone_number)
+        Database().createProvider(name, address, zipcode, phone_number,listTags)
         return redirect(url_for('root'))
 
     def register(self):
