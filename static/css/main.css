@@ -55,6 +55,10 @@
 .landing-button {
     font-size: 3.5rem;
     font-weight: bolder;
+    border-color: silver;
+    border-width: thin;
+    border-style: solid;
+    border-radius: 5rem;
 }
 
 .fasize{
