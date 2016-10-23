@@ -48,11 +48,11 @@
     font-size:300px;
 }
 .colorlightseagreen, .volunteer-counter {
-    color: lightseagreen;
+    color: lightseagreen !important;
 }
 
 .colorlightcrimson, .connection-counter {
-    color: crimson;
+    color: crimson !important;
 }
 
 ul {
