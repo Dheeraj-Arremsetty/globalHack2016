@@ -47,11 +47,11 @@
 .fasize{
     font-size:300px;
 }
-.colorlightseagreen{
+.colorlightseagreen, .volunteer-counter {
     color: lightseagreen;
 }
 
-.colorlightcrimson{
+.colorlightcrimson, .connection-counter {
     color: crimson;
 }
 
@@ -60,4 +60,16 @@ ul {
 }
 .fafaLightBlue{
     color: aliceblue;
+}
+
+/* Style usage counters */
+.counter-section {
+    font-size: 2.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    opacity: 87%;
+}
+.counter {
+    font-weight: bold;
+    font-size: 105%;
 }
