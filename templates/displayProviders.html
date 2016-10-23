@@ -5,15 +5,16 @@
     <h1>Available volunteers</h1>
 </div>
 
+
 <div style="background:#4e4e4e;">
     <ul id="gallery" class="provider-list">
         {% for data in result %}
         <li class="provider-list-item">
             <a href="request.html" class="provider-link">
-                <img src="img/smiley.png" class="provider-smiley-face">
+                <img src="img/smiley.png" class="provider-smiley-face" title="{{data['name']}}">
                 {% for value in data['willing_to_provide'] %}
                     {{ result['willing_to_provide'] }}
-                    <a href="#">  <img src="img/{{value}}.png" width="5%" class="imagedropdown"></a>
+                    <a href="#">  <img src="img/{{value}}.png" width="5%" class="imagedropdown" title="{{data['name']}}"></a>
                 {% endfor %}
             </a>
         <li/>
