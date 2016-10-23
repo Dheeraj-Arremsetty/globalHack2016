@@ -10,7 +10,7 @@
     <ul id="gallery" class="provider-list">
         {% for data in result %}
         <li class="provider-list-item">
-            <a href="request.html" class="provider-link">
+            <a href="provider_info?provider_id={{ data['_id'] }}" class="provider-link">
                 <img src="img/smiley.png" class="provider-smiley-face" title="{{data['name']}}">
                 {% for value in data['willing_to_provide'] %}
                     {{ result['willing_to_provide'] }}

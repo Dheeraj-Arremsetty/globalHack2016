@@ -96,6 +96,9 @@ class Database(object):
         item = self.client[Database.DATABASE_NAME][collection_name].find({ '_id': ObjectId(need_item_id)})
         return dumps({ 'result': item })
 
+    def getProviderInfo(self, provider_id):
+        return self.client[Database.DATABASE_NAME].providers.find_one({ '_id': ObjectId(provider_id) })
+
     def getProvidersDetails(self):
         providers = self.client[Database.DATABASE_NAME].providers.find({ 'willing_to_provide': { '$exists': True, '$not': { '$size': 0 } } })
         providerArray = []

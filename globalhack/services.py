@@ -63,7 +63,8 @@ class BaseServices:
                           'register_provider',
                           'register_user',
                           'food',
-                          'register_for_help' ]:
+                          'register_for_help',
+                          'provider_info' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -78,6 +79,12 @@ class BaseServices:
                               'need_item_id',
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
+
+    def provider_info(self):
+        params = self.getparams(request)
+        provider_id = params.get('provider_id', None)
+        provider = Database().getProviderInfo(provider_id)
+        return render_template('provider_info.html', provider=provider)
 
     def get_volunteer_count(self):
         return jsonify({ 'count': Database().getVolunteerCount() })
@@ -140,7 +147,6 @@ class BaseServices:
                 Notifier.sendMessage(message, matching_provider['phone_number'])
 
         return redirect(url_for('root'))
-
 
 
     def displayProviders(self):

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content">
+  {{ super() }}
+  <h1>{{ provider['name'] }}</h1>
+
+  <i class="fa fa-phone colorlightseagreen">
+     Tel: <a href="tel:+{{ provider['phone_number'] }}">{{ provider['phone_number'] }}</a>
+  </i>
+
+  <br />
+  <br />
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Can Provide</h3>
+      </div>
+      <div class="panel-body">
+          <ul>
+          {% for item in provider['willing_to_provide'] %}
+            <li>{{ item.title() }}</li>
+          {% endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+{% endblock %}
