@@ -4,10 +4,13 @@
   {{ super() }}
   <h1>{{ provider['name'] }}</h1>
 
+  <br />
+
   <i class="fa fa-phone colorlightseagreen">
      Tel: <a href="tel:+{{ provider['phone_number'] }}">{{ provider['phone_number'] }}</a>
   </i>
 
+  <br />
   <br />
   <br />
   <div class="panel panel-default">
@@ -15,9 +18,9 @@
           <h3 class="panel-title">Can Provide</h3>
       </div>
       <div class="panel-body">
-          <ul>
+          <ul class="list-inline">
           {% for item in provider['willing_to_provide'] %}
-            <li>{{ item.title() }}</li>
+              <li><img src="img/{{item}}.png" class="imagedropdown provider-resource-icon" title="{{ item.title() }}"></li>
           {% endfor %}
           </ul>
       </div>
