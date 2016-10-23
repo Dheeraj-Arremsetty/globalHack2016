@@ -44,6 +44,10 @@ class BaseServices:
                               'displayProviders.html',
                               getattr(self, 'displayProviders'),
                               methods=['GET'])
+        self.app.add_url_rule(prefix + '/awardsPage.html',
+                              'awardsPage.html',
+                              getattr(self, 'awardsPage'),
+                              methods=['GET'])
 
         for counter in [ 'volunteer', 'connection' ]:
             self.app.add_url_rule(prefix + '/counters/%ss' % counter,
@@ -148,6 +152,10 @@ class BaseServices:
 
         return redirect(url_for('root'))
 
+
+    def awardsPage(self):
+        #result = Database().getProvidersDetails()
+        return render_template('awardsPage.html',result = {})
 
     def displayProviders(self):
         result = Database().getProvidersDetails()
