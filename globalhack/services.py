@@ -104,18 +104,18 @@ class BaseServices:
 
         if not name:
             flash('Name was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
 
         if not zipcode:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         if not phone_number:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
-        print 'Name: %s' % name
+        print 'Volunteer name: %s' % name
         # print 'Password: %s' % password
 
         needs = []
@@ -133,7 +133,7 @@ class BaseServices:
         except Exception as e:
             print e
             flash('Zipcode was not correct!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         print 'Close zipcodes: %s' % close_zipcodes
 
@@ -150,8 +150,7 @@ class BaseServices:
                           phone_number)
                 Notifier.sendMessage(message, matching_provider['phone_number'])
 
-        return redirect(url_for('root'))
-
+        return render_template('messageSentScreen.html')
 
     def awardsPage(self):
         #result = Database().getProvidersDetails()
@@ -310,25 +309,25 @@ class BaseServices:
 
         if not name:
             flash('Name was not specified!', 'danger')
-            return render_template('needHelp.html')
+            return render_template('want_to_help.html')
 
         if not address:
             flash('Address was not specified!', 'danger')
-            return render_template('needHelp.html')
+            return render_template('want_to_help.html')
 
         if not zipcode:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('needHelp.html')
+            return render_template('want_to_help.html')
 
         if not phone_number:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('needHelp.html')
+            return render_template('want_to_help.html')
 
         print 'Name: %s' % name
         # print 'Password: %s' % password
 
         Database().createProvider(name, address, zipcode, phone_number,listTags)
-        return redirect(url_for('root'))
+        return render_template('thankYouScreen.html')
 
     def register(self):
         params = self.getparams(request)
