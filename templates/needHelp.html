@@ -2,7 +2,7 @@
 {% block content %}
   {{ super() }}
 
-    <form class="form-horizontal" action="/register_for_help" enctype="multipart/form-data" method=post>
+  <form class="form-horizontal" action="/register_for_help" enctype="multipart/form-data" method=post>
       <div class='form-group'>
           <label for="name" class="col-sm-2 control-label">Name:</label>
           <div class="col-sm-5">
@@ -16,23 +16,66 @@
           </div>
       </div>
 
-    <div class='form-group'>
+      <div class='form-group'>
           <label for="phone_number" class="col-sm-2 control-label">Phone Number:</label>
           <div class="col-sm-5">
               <input type="text" class="form-control input-medium bfh-phone" data-format="+1 (ddd) ddd-dddd" placeholder="1-234-567-8901" name="phone_number"/>
           </div>
       </div>
 
-
-      <div class='form-group submit-button'>
-          <div class="col-sm-offset-2 col-sm-5">
-              <input type="submit" class="btn btn-primary" value="Cale">
+      <div class='form-group'>
+          <label for="financial_need" class="col-sm-2 control-label">Do you need help with bills?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="financial_need"/>
           </div>
       </div>
+
+      <div class='form-group'>
+          <label for="food_need" class="col-sm-2 control-label">Do you need food?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="food_need"/>
+          </div>
+      </div>
+
+      <div class='form-group'>
+          <label for="shelter_need" class="col-sm-2 control-label">Do you need shelter?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="shelter_need"/>
+          </div>
+      </div>
+
+      <div class='form-group'>
+          <label for="clothes_need" class="col-sm-2 control-label">Do you need clothes?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="clothes_need"/>
+          </div>
+      </div>
+
+      <div class='form-group'>
+          <label for="education_need" class="col-sm-2 control-label">Do you need learning resources?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="education_need"/>
+          </div>
+      </div>
+
+      <div class='form-group'>
+          <label for="healthcare_need" class="col-sm-2 control-label">Do you need healthcare resources?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="healthcare_need"/>
+          </div>
+      </div>
+
+      <div class='form-group'>
+          <label for="other_need" class="col-sm-2 control-label">Do you have needs not covered by other questions?</label>
+          <div class="col-sm-1">
+              <input type="checkbox" class="form-control input-medium" name="healthcare_need"/>
+          </div>
+      </div>
+
+      <div class='form-group submit-button'>
+           <div class="col-sm-offset-2 col-sm-5">
+             <input type="submit" class="btn btn-primary" value="Cale">
+           </div>
+      </div>
   </form>
-
-
 {% endblock %}
-
-
-
