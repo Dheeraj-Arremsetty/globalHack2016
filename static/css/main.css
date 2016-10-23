@@ -68,8 +68,9 @@ ul {
     padding-top: 3rem;
     padding-bottom: 3rem;
     opacity: 87%;
+    font-weight: bold;
 }
 .counter {
-    font-weight: bold;
-    font-size: 105%;
+    font-weight: bolder;
+    font-size: 115%;
 }
