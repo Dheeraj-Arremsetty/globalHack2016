@@ -49,7 +49,7 @@ class BaseServices:
                           'register_user',
                           'want_to_help',
                           'register_provider',
-                          'register_user','food' ]:
+                          'register_user','food','register_for_help' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
