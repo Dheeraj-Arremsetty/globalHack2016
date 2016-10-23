@@ -48,14 +48,21 @@
     display: block;
 }
 
+.landing-button a {
+    text-decoration: none;
+}
+
 .fasize{
     font-size:300px;
 }
-.has-need {
+
+.has-need, 
+.has-need a {
     color: lightseagreen;
 }
 
-.volunteer {
+.volunteer,
+.volunteer a {
     color: crimson;
 }
 
