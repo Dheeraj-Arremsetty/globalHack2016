@@ -47,12 +47,12 @@
 .fasize{
     font-size:300px;
 }
-.colorlightseagreen, .volunteer-counter {
-    color: lightseagreen !important;
+.colorlightseagreen, .connection-counter {
+    color: lightseagreen;
 }
 
-.colorlightcrimson, .connection-counter {
-    color: crimson !important;
+.colorlightcrimson, .volunteer-counter {
+    color: crimson;
 }
 
 ul {
