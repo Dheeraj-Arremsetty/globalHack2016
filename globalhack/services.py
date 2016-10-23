@@ -310,19 +310,19 @@ class BaseServices:
 
         if not name:
             flash('Name was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         if not address:
             flash('Address was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         if not zipcode:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         if not phone_number:
             flash('Zipcode was not specified!', 'danger')
-            return render_template('want_to_help.html')
+            return render_template('needHelp.html')
 
         print 'Name: %s' % name
         # print 'Password: %s' % password
