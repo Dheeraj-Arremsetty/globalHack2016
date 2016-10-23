@@ -1,9 +1,13 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   border-radius: 0;
     border-style: none;
     border-width: 0;
+}
+
+.main-buttons {
+  margin-top: 40px;
 }
 
 .main-header {
