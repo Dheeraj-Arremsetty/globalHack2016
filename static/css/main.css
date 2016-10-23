@@ -44,14 +44,18 @@
   .row.content { height:auto; }
 }
 
+.landing-button i {
+    display: block;
+}
+
 .fasize{
     font-size:300px;
 }
-.colorlightseagreen, .connection-counter {
+.has-need {
     color: lightseagreen;
 }
 
-.colorlightcrimson, .volunteer-counter {
+.volunteer {
     color: crimson;
 }
 
