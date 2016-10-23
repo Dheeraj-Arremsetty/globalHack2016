@@ -5,11 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/font-awesome.min.css') }}">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+  <script src="{{ url_for('static',filename='js/bootstrap-checkbox.js') }}"></script>
+  <script>
+      $( document ).ready(function() {
+            $(':checkbox').checkboxpicker();
+      });
+  </script>
+>>>>>>> Made checkboxes prettier
 </head>
-<body ng-app="mainApp" ng-init="providerInfo={name:''}">
-
+<body>
     <nav class="navbar navbar-inverse main-header" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -62,8 +70,11 @@
     <nav class="navbar-bottom" role="navigation">
         <center>{{ config.FOOTER }}</center>
     </nav>
+<<<<<<< e1c98da957d84aa00835e3a4fdd873ca50b1dd5c
 
     <script src="../static/scripts/jquery-3.1.1.min.js"></script>
     <script src="../static/scripts/bootstrap.min.js"></script>
+=======
+>>>>>>> Made checkboxes prettier
 </body>
 </html>
