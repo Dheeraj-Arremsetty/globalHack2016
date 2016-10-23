@@ -41,6 +41,12 @@ class BaseServices:
                               getattr(self, 'help_ui'),
                               methods=['GET'])
 
+        for counter in [ 'volunteer', 'connection' ]:
+            self.app.add_url_rule(prefix + '/counters/%ss' % counter,
+                                  counter + 's',
+                                  getattr(self, 'get_%s_count' % counter),
+                                  methods=['GET'])
+
         for endpoint in [ 'contact',
                           'about',
                           'login',
@@ -51,7 +57,9 @@ class BaseServices:
                           'register_user',
                           'want_to_help',
                           'register_provider',
-                          'register_user','food','register_for_help' ]:
+                          'register_user',
+                          'food',
+                          'register_for_help' ]:
             self.app.add_url_rule(prefix + '/%s' % endpoint,
                                   endpoint,
                                   getattr(self, endpoint),
@@ -66,6 +74,12 @@ class BaseServices:
                               'need_item_id',
                               getattr(self, 'need_item_id'),
                               methods=['GET', 'DELETE', 'PUT'])
+
+    def get_volunteer_count(self):
+        return jsonify({ 'count': Database().getVolunteerCount() })
+
+    def get_connection_count(self):
+        return jsonify({ 'count': Database().getConnectionCount() })
 
     def register_for_help(self):
         params = self.getparams(request)

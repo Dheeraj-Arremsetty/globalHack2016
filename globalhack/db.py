@@ -31,6 +31,12 @@ class Database(object):
     def createUser(self, username, password):
         return str(self.client[Database.DATABASE_NAME].users.insert_one({ 'username': username, 'password': password }).inserted_id)
 
+    def getVolunteerCount(self):
+        return self.client[Database.DATABASE_NAME].providers.count()
+
+    def getConnectionCount(self):
+        return self.client[Database.DATABASE_NAME].providee.count()
+
     def getUserInfo(self, uid):
         if not uid:
             print 'User %s not specified!' % user
