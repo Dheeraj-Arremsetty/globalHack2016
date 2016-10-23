@@ -2,6 +2,8 @@
 .navbar {
   margin-bottom: 80px;
   border-radius: 0;
+    border-style: none;
+    border-width: 0;
 }
 
 .main-header {
