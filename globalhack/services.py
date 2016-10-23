@@ -44,6 +44,15 @@ class BaseServices:
                               'displayProviders.html',
                               getattr(self, 'displayProviders'),
                               methods=['GET'])
+        self.app.add_url_rule(prefix + '/thankYouScreen.html',
+                              'thankYouScreen.html',
+                              getattr(self, 'thankYouScreen'),
+                              methods=['GET'])
+
+        self.app.add_url_rule(prefix + '/messageSentScreen.html',
+                              'messageSentScreen.html',
+                              getattr(self, 'messageSentScreen'),
+                              methods=['GET'])
 
         for counter in [ 'volunteer', 'connection' ]:
             self.app.add_url_rule(prefix + '/counters/%ss' % counter,
@@ -152,9 +161,17 @@ class BaseServices:
 
         return render_template('messageSentScreen.html')
 
+    def messageSentScreen(self):
+        #result = Database().getProvidersDetails()
+        return render_template('messageSentScreen.html',result = {})
+
     def awardsPage(self):
         #result = Database().getProvidersDetails()
         return render_template('awardsPage.html',result = {})
+
+    def thankYouScreen(self):
+        #result = Database().getProvidersDetails()
+        return render_template('thankYouScreen.html',result = {})
 
     def displayProviders(self):
         result = Database().getProvidersDetails()
