@@ -44,10 +44,6 @@ class BaseServices:
                               'displayProviders.html',
                               getattr(self, 'displayProviders'),
                               methods=['GET'])
-        self.app.add_url_rule(prefix + '/awardsPage.html',
-                              'awardsPage.html',
-                              getattr(self, 'awardsPage'),
-                              methods=['GET'])
 
         for counter in [ 'volunteer', 'connection' ]:
             self.app.add_url_rule(prefix + '/counters/%ss' % counter,
@@ -61,6 +57,7 @@ class BaseServices:
                           'needs',
                           'provider',
                           'providee',
+                          'providerAwards',
                           'register',
                           'register_user',
                           'want_to_help',
@@ -89,6 +86,9 @@ class BaseServices:
         provider_id = params.get('provider_id', None)
         provider = Database().getProviderInfo(provider_id)
         return render_template('provider_info.html', provider=provider)
+
+    def providerAwards(self):
+        return render_template('providerAwards.html')
 
     def get_volunteer_count(self):
         return jsonify({ 'count': Database().getVolunteerCount() })
