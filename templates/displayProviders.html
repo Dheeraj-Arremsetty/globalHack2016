@@ -20,10 +20,10 @@
         {% for data in result %}
         <li width="100%">
 
-            <!--<a href="request.html"><img src="img/smiley.png" alt="Volunteer: Katy"></a>-->
+            <a href="request.html"><img src="img/smiley.png" alt="Volunteer: Katy" width="5%"></a>
             {% for value in data['willing_to_provide'] %}
                 {{ result['willing_to_provide'] }}
-                <a href="#">  <img src="img/{{value}}.png" class="imagedropdown"></a>
+                <a href="#">  <img src="img/{{value}}.png" width="5%" class="imagedropdown"></a>
             {% endfor %}
 
         <li/>
