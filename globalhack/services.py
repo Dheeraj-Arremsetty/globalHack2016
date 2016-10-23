@@ -141,7 +141,7 @@ class BaseServices:
 
         if matching_providers.count() > 0:
             for matching_provider in matching_providers:
-                message = 'Hi %s,\nCale here and %s needs your help! Please give them a call at %s at your eraliest convenience!' % (matching_provider['name'],
+                message = 'Hi %s,\nCale here and %s needs your help! Please give them a call at %s at your earliest convenience!' % (matching_provider['name'],
                           name,
                           phone_number)
                 Notifier.sendMessage(message, matching_provider['phone_number'])
