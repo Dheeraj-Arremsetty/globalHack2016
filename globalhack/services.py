@@ -89,10 +89,30 @@ class BaseServices:
         print 'Name: %s' % name
         # print 'Password: %s' % password
 
+        needs = []
+        for need in [ "financial", "food", "shelter", "clothes", "education", "healthcare" ]:
+            if request.form.getlist('%s_need' % need) == [u'on']:
+                needs.append(need)
+
+        print 'Needs: %s' % needs
+
         Database().registerForHelp(name, zipcode, phone_number)
 
-        close_zipcodes = Proximity.find_close_zipcodes(zipcode)
-        matching_providers = Database().findProvidersWithZipcodes(close_zipcodes)
+        close_zipcodes = []
+        try:
+            close_zipcodes = Proximity.find_close_zipcodes(zipcode)
+        except Exception as e:
+            print e
+            flash('Zipcode was not correct!', 'danger')
+            return render_template('want_to_help.html')
+
+        print 'Close zipcodes: %s' % close_zipcodes
+
+        matching_providers = Database().findProvidersWithZipcodes(close_zipcodes, needs)
+
+        if matching_providers.count() == 0:
+            print 'No matching providers for %s:%s. Trying all.' % (zipcode, needs)
+            matching_providers = Database().findProvidersWithZipcodes(close_zipcodes)
 
         if matching_providers.count() > 0:
             for matching_provider in matching_providers:

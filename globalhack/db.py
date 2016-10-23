@@ -52,9 +52,13 @@ class Database(object):
     def registerForHelp(self, name, zipcode, phone_number):
         return str(self.client[Database.DATABASE_NAME].providee.insert_one({ 'name': name,'zipcode': zipcode, 'phone_number': phone_number }).inserted_id)
 
-    def findProvidersWithZipcodes(self, zipcodes):
+    def findProvidersWithZipcodes(self, zipcodes, needs = None):
+        query = { 'zipcode': { "$in" : zipcodes }}
+        if needs != None and len(needs) > 0:
+            query['willing_to_provide'] = { "$in" : zipcodes }
+
         return self.client[Database.DATABASE_NAME].providers \
-                   .find({ 'zipcode': { "$in" : zipcodes } }).limit(5)
+                   .find(query).limit(5)
 
     def getUserInfo(self, uid):
         if not uid:
