@@ -40,6 +40,10 @@ class BaseServices:
                               'help.html',
                               getattr(self, 'help_ui'),
                               methods=['GET'])
+        self.app.add_url_rule(prefix + '/displayProviders.html',
+                              'displayProviders.html',
+                              getattr(self, 'displayProviders'),
+                              methods=['GET'])
 
         for counter in [ 'volunteer', 'connection' ]:
             self.app.add_url_rule(prefix + '/counters/%ss' % counter,
@@ -136,6 +140,12 @@ class BaseServices:
                 Notifier.sendMessage(message, matching_provider['phone_number'])
 
         return redirect(url_for('root'))
+
+
+
+    def displayProviders(self):
+
+        return render_template('displayProviders.html',result = { 1: 1*i for i in range(3)})
 
     def want_to_help(self):
         return render_template('want_to_help.html')
