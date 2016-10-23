@@ -97,12 +97,9 @@ class Database(object):
         return dumps({ 'result': item })
 
     def getProvidersDetails(self):
-        user = self.client[Database.DATABASE_NAME].providers.find()
-        print "#"*30
-        print user
-        print "#" * 30
-        _list = []
-        for d in user:
-            _list.append(d)
-        return _list
+        providers = self.client[Database.DATABASE_NAME].providers.find({ 'willing_to_provide': { '$exists': True, '$not': { '$size': 0 } } })
+        providerArray = []
+        for provider in providers:
+            providerArray.append(provider)
+        return providerArray
 
