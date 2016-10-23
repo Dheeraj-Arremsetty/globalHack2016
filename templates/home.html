@@ -58,6 +58,7 @@
 <script src="../scripts/local/controllers/master.js"></script>
 <script src="../scripts/local/controllers/login.js"></script>
 <script src="../scripts/local/controllers/provider.js"></script>
+<script src="../scripts/local/controllers/counter.js"></script>
 
 <script type="text/ng-template" id="loginTemplate.htm">
     <div class="login" ng-controller="loginController">
@@ -189,6 +190,10 @@
         <div  class="col-md-6 text-center" ><a href="/help.html"> <i class="fa fa-heartbeat fasize colorlightseagreen"></i></a></div>
         <div class="col-md-6 text-center"><a href="/want_to_help"><i class="fa fa-medkit fasize colorlightcrimson"></i></a></div>
     </div>
+    <div class='countersection' ng-controller="counterController">
+            <div>Our <span class="counter volunteercount">{{ volCount }} volunteers</span> have helped us to make</div>
+            <div class="counter connectioncount">{{ connCount }} connections!</div>
+        </div>
 </script>
 
 
