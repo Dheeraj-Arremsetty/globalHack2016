@@ -144,8 +144,8 @@ class BaseServices:
 
 
     def displayProviders(self):
-
-        return render_template('displayProviders.html',result = { 1: 1*i for i in range(3)})
+        result = Database().getProvidersDetails()
+        return render_template('displayProviders.html',result = result)
 
     def want_to_help(self):
         return render_template('want_to_help.html')

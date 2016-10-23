@@ -96,3 +96,13 @@ class Database(object):
         item = self.client[Database.DATABASE_NAME][collection_name].find({ '_id': ObjectId(need_item_id)})
         return dumps({ 'result': item })
 
+    def getProvidersDetails(self):
+        user = self.client[Database.DATABASE_NAME].providers.find()
+        print "#"*30
+        print user
+        print "#" * 30
+        _list = []
+        for d in user:
+            _list.append(d)
+        return _list
+
